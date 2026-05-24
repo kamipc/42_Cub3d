@@ -12,6 +12,7 @@
 
 #include "../headers/cub3d.h"
 
+//trim path to remove excess spaces if they exist
 int	trim_path(t_cub3d *cub3d, t_textures *textures, char *line, char *type)
 {
 	char	*temp;
@@ -37,7 +38,7 @@ int	trim_path(t_cub3d *cub3d, t_textures *textures, char *line, char *type)
 	free(line);
 	return (1);
 }
-
+//gets the texture path from the file 
 void	get_texture_path(t_cub3d *cub3d, t_textures *textures)
 {
 	int		fd;
@@ -65,11 +66,49 @@ void	get_texture_path(t_cub3d *cub3d, t_textures *textures)
 	close(fd);
 }
 
+//try to render imgs to verify they are valid
+bool	img_is_valid(t_cub3d *cub3d, char *path)
+{
+	int		*h;
+	int		*w;
+	void	*img;
+
+	img = mlx_png_file_to_image(cub3d->mlx, path, &w, &h);
+	if (!img)
+	{
+		mlx_destroy_display(cub3d->mlx);
+		return (false);
+	}
+	mlx_destroy_image(cub3d->mlx, img);
+	mlx_destroy_display(cub3d->mlx);
+	return (true);
+}
+//send every texture path to try to render
+bool	verify_imgs(t_cub3d *cub3d)
+{
+	if (!img_is_valid(cub3d, cub3d->textures->C))
+		return (false);
+	if (!img_is_valid(cub3d, cub3d->textures->F))
+		return (false);
+	if (!img_is_valid(cub3d, cub3d->textures->NO))
+		return (false);
+	if (!img_is_valid(cub3d, cub3d->textures->SO))
+		return (false);
+	if (!img_is_valid(cub3d, cub3d->textures->EA))
+		return (false);
+	if (!img_is_valid(cub3d, cub3d->textures->WE))
+		return (false);
+	return (true);
+}
+
 void	validate_textures(t_cub3d *cub3d)
 {
-	t_textures	*textures;
-
-	textures = init_textures(cub3d);
-	get_texture_path(cub3d, textures);
-	
+	cub3d->textures = init_textures(cub3d);
+	get_texture_path(cub3d, cub3d->textures);
+	if((!cub3d->textures->C) || (!cub3d->textures->F) || (!cub3d->textures->NO)
+		|| (!cub3d->textures->SO) || (!cub3d->textures->EA)
+		|| (!cub3d->textures->WE))
+		call_error(cub3d,ERROR_MISS_TEXT);
+	if (!verify_imgs(cub3d))
+		call_error(cub3d, );
 }

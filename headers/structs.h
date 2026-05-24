@@ -23,12 +23,19 @@ typedef struct s_textures
 	char	*C;
 }			t_textures;
 
+typedef struct s_map
+{
+	char	*map;
+	char	*copy_map;
+	char	*player_start;
+}			t_map;
+
 typedef struct s_cub3d
 {
-	void	*mlx;
-	char	*map_filename;
-	char	*p_start;
-	struct s_textures	*t_textures;
+	void				*mlx;
+	char				*map_filename;
+	struct s_map		*map;
+	struct s_textures	*textures;
 }			t_cub3d;
 
 #endif

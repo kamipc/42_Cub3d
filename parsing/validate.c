@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../headers/cub3d.h"
 
 void	validate(t_cub3d *cub3d)
 {
 	validate_file(cub3d);
 	validate_textures(cub3d);
+	validate_map(cub3d);
 }

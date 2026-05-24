@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_file.c                                    :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 20:02:41 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/05/22 20:02:41 by cpinho-c         ###   ########.fr       */
+/*   Created: 2026/05/24 16:14:04 by cpinho-c          #+#    #+#             */
+/*   Updated: 2026/05/24 16:14:04 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-//verify if the file name has the correct extension and valid name
-void	validade_file(t_cub3d *cub3d)
+t_map	init_map(t_cub3d *cub3d)
 {
-	char	*temp;
-	int		i;
+	t_map	*map;
 
-	temp = cub3d->map_filename;
-	i = 0;
-	if (!temp)
-		call_error(cub3d, ERROR_FILE_NOEXIST);
-	while (temp[i] && temp[i + 1] != '\0')
-		i++;
-	if ((ft_strncmp(temp[i] - 3, ".cub", 4) != 0) || (ft_strlen(temp) == 4))
-		call_error(cub3d, ERROR_FILE_TYPE);
+	map = malloc(sizeof(t_map));
+	if (!map)
+		call_error(cub3d, strerror(errno));
+	map->map = (char **)malloc(1 * sizeof(char *));
+	if (!map->map)
+		call_error(cub3d, strerror(errno));
+	map->map[0] = NULL;
+	map->copy_map = NULL;
+	map->player_start = NULL;
+	return (map);
 }

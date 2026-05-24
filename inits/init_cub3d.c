@@ -20,8 +20,10 @@ t_cub3d	*init_cub3d(void)
 	if (!cub3d)
 		call_error(NULL, strerror(errno));
 	cub3d->mlx = init_mlx();
+	if (!mlx)
+		call_error(cub3d, strerror(errno));
 	cub3d->map_filename = NULL;
-	cub3d->p_start = NULL;
+	cub3d->map = NULL;
 	cub3d->t_textures = NULL;
 	return (cub3d);
 }
