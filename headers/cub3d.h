@@ -30,6 +30,8 @@
 # define ERROR_FILE_NOEXIST "File does not exist\n"
 # define ERROR_MISS_TEXT "Missing texture\n"
 # define ERROR_INV_TEXT "Invalid texture\n"
+# define ERROR_MAP_CHAR "Map has invalid information\n"
+# define ERROR_MAP_PLAYER "Invalid number of players on map\n"
 
 //--------------------------------------//
 
@@ -48,9 +50,19 @@ bool	verify_imgs(t_cub3d *cub3d);
 bool	img_is_valid(t_cub3d *cub3d, char *path);
 	//validate_map
 void	validate_map(t_cub3d *cub3d);
+void	find_map(t_cub3d *cub3d);
+void	save_map(t_cub3d *cub3d, char *line, int *i);
+bool	is_map_start(char *line);
 //src
 
 //utils
+	//error
 void call_error(t_cub3d *cub3d, char *msg);
+	//validate_map_utils
+void	verify_map_characters(t_cub3d *cub3d);
+bool	not_valid_character(t_cub3d	*cub3d, char c);
+bool	is_player_start(t_cub3d *cub3d, char c, int *playernum);
+void	verify_map_walls(t_cub3d *cub3d);
+void	copy_map(t_cub3d *cub3d);
 
 #endif

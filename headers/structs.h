@@ -27,7 +27,9 @@ typedef struct s_map
 {
 	char	*map;
 	char	*copy_map;
-	char	*player_start;
+	char	player_start_dir;
+	int		player_x;
+	int		player_y;
 }			t_map;
 
 typedef struct s_cub3d

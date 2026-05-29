@@ -43,7 +43,7 @@ void	save_map(t_cub3d *cub3d, char *line, int *i)
 	(*i)++;
 	cub3d->map->map[*i] = NULL;
 }
-
+//finds map in the file to start saving it to then validate
 void	find_map(t_cub3d *cub3d)
 {
 	int		fd;
@@ -71,5 +71,6 @@ void	validate_map(t_cub3d *cub3d)
 {
 	cub3d->map = init_map(cub3d);
 	find_map(cub3d);
-
+	verify_map_characters(cub3d);
+	verify_map_walls(cub3d);
 }
