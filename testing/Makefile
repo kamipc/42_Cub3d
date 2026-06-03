@@ -6,7 +6,7 @@
 #    By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 16:29:18 by cpinho-c          #+#    #+#              #
-#    Updated: 2026/06/03 13:55:47 by cpinho-c         ###   ########.fr        #
+#    Updated: 2026/06/03 18:44:35 by cpinho-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,15 @@ SRCS = main_test.c \
 	   ../inits/init_cub3d.c \
 	   ../inits/init_map.c \
 	   ../inits/init_textures.c \
+	   ../parsing/get_info.c \
 	   ../parsing/validate_file.c \
 	   ../parsing/validate_map.c \
 	   ../parsing/validate_textures.c \
 	   ../parsing/validate.c \
 	   ../utils/error.c \
+	   ../utils/get_info_utils.c \
 	   ../utils/validate_map_utils.c \
-	   ../utils/validate_map_utils2.c
+	   ../utils/validate_map_utils2.c 
 	   
 
 OBJS = $(SRCS:.c=.o)
