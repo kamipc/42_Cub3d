@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:22:08 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/05/22 15:22:08 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/06/03 13:35:31 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_textures
 
 typedef struct s_map
 {
-	char	*map;
-	char	*copy_map;
+	char	**map;
+	char	**copy_map;
 	char	player_start_dir;
 	int		player_x;
 	int		player_y;
@@ -34,10 +34,10 @@ typedef struct s_map
 
 typedef struct s_cub3d
 {
-	void				*mlx;
-	char				*map_filename;
-	struct s_map		*map;
-	struct s_textures	*textures;
+	void		*mlx;
+	char		*map_filename;
+	t_map		*map;
+	t_textures	*textures;
 }			t_cub3d;
 
 #endif

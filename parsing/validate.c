@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 20:02:48 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/05/22 20:02:48 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/06/03 15:07:07 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	validate(t_cub3d *cub3d)
 {
 	validate_file(cub3d);
 	validate_textures(cub3d);
-	validate_map(cub3d);
+	//validate_map(cub3d);
 }

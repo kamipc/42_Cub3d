@@ -6,13 +6,13 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:28:01 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/05/29 14:28:01 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/06/03 13:54:23 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-bool	not_valid_character(t_cub3d	*cub3d, char c)
+bool	not_valid_character(char c)
 {
 	if ((c != '0') && (c != '1') && (c != 'N') && (c != 'S') && (c != 'W')
 		&& (c != 'E') && (c != ' '))
@@ -20,7 +20,7 @@ bool	not_valid_character(t_cub3d	*cub3d, char c)
 	return (false);
 }
 
-bool	is_player_start(t_cub3d *cub3d, char c, int *playernum)
+bool	is_player_start(char c, int *playernum)
 {
 	if ((c != 'N') || (c != 'S') || (c != 'W') || (c != 'E'))
 	{
@@ -43,9 +43,9 @@ void	verify_map_characters(t_cub3d *cub3d)
 		j = 0;
 		while (cub3d->map->map[i][j])
 		{
-			if (not_valid_character(cub3d, cub3d->map->map[i][j]))
+			if (not_valid_character(cub3d->map->map[i][j]))
 				call_error(cub3d, ERROR_MAP_CHAR);
-			if (is_player_start(cub3d, cub3d->map->map[i][j], &playernum))
+			if (is_player_start(cub3d->map->map[i][j], &playernum))
 				{
 					if (playernum > 1)
 						call_error(cub3d, ERROR_MAP_PLAYER);

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   free_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpinho-c <cpinho-c@student.42.fr>          #+#  +:+       +#+        */
+/*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-15 11:32:33 by cpinho-c          #+#    #+#             */
-/*   Updated: 2024-11-15 11:32:33 by cpinho-c         ###   ########.fr       */
+/*   Created: 2026/06/01 15:51:10 by cpinho-c          #+#    #+#             */
+/*   Updated: 2026/06/01 15:52:27 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+#include "../headers/cub3d.h"
+
+void	free_array(char **array)
 {
-	new->next = *lst;
-	*lst = new;
+	int	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		if (array[i])
+			free(array[i]);
+		i++;
+	}
 }

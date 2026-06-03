@@ -6,7 +6,7 @@
 #    By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/31 14:05:01 by cpinho-c          #+#    #+#              #
-#    Updated: 2026/03/05 15:41:57 by cpinho-c         ###   ########.fr        #
+#    Updated: 2026/06/03 14:35:44 by cpinho-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS = ft_atoi.c \
 	ft_strlcat.c \
 	ft_strdup.c \
 	ft_calloc.c \
+	ft_realloc.c \
 	ft_substr.c \
 	ft_strjoin.c \
 	ft_strtrim.c \

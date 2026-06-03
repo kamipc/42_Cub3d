@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validade_map_utils2.c                              :+:      :+:    :+:   */
+/*   free_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 14:54:42 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/05/29 14:54:42 by cpinho-c         ###   ########.fr       */
+/*   Created: 2026/06/01 15:48:43 by cpinho-c          #+#    #+#             */
+/*   Updated: 2026/06/03 15:09:26 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-void	copy_map(t_cub3d *cub3d)
+void	free_textures(t_textures *textures)
 {
-	int	i;
-
-	i = 0;
-	while (cub3d->map->map[i])
-		i++;
-	cub3d->map->copy_map = (char **)malloc((i + 1) * sizeof(char *));
-	if (!cub3d->map->copy_map)
-		call_error(cub3d, strerror(errno));
-	i = 0;
-	while (cub3d->map->map[i])
-	{
-		cub3d->map->copy_map[i] = ft_strdup(cub3d->map->map[i]);
-		i++;
-	}
-}
-
-void	verify_map_walls(t_cub3d *cub3d)
-{
-	copy_map(cub3d);
-	flood_fill_map(cub3d);
+	if (!textures)
+		return ;
+	if (textures->C)
+		free(textures->C);
+	if (textures->F)
+		free(textures->F);
+	if (textures->EA)
+		free(textures->EA);
+	if (textures->WE)
+		free(textures->WE);
+	if (textures->NO)
+		free(textures->NO);
+	if (textures->SO)
+		free(textures->SO);
+	free(textures);
 }
