@@ -84,4 +84,6 @@ bool		is_player_start(char c, int *playernum);
 void		verify_map_walls(t_cub3d *cub3d);
 void		copy_map(t_cub3d *cub3d);
 
+//execution
+
 #endif

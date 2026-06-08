@@ -35,9 +35,19 @@ typedef struct s_map
 typedef struct s_cub3d
 {
 	void		*mlx;
+	void		*win;
 	char		*map_filename;
 	t_map		*map;
 	t_textures	*textures;
 }			t_cub3d;
+
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+}	t_player;
+
 
 #endif

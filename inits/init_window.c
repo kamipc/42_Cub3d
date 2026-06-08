@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 15:35:21 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 14:43:43 by cpinho-c         ###   ########.fr       */
+/*   Created: 2026/06/08 11:00:16 by sade-ara          #+#    #+#             */
+/*   Updated: 2026/06/08 11:00:16 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/cub3d.h"
+#include "../headers/cub3d.h"
 
-int main(int ac, char **av)
+void	init_window(t_cub3d *cub)
 {
-	t_cub3d	*cub3d;
-
-	if (ac != 2)
-		call_error(cub3d, ERROR_ARG);
-	cub3d = init_cub3d();
-	if (!cub3d->map_filename)
-		call_error(cub3d, strerror(errno));
-	validate(cub3d);
+	cub->win = mlx_new_window(
+		cub->mlx,
+		1280,
+		720,
+		"Cub3D"
+	);
+	if (!cub->win)
+		call_error(cub, "window error");
 }
