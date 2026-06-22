@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:21:26 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 18:45:45 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/06/22 15:41:38 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 
 # include "structs.h"
 # include "../libft/libft.h"
+
+//----------- WINDOWN SIZE -------------//
+
+# define WIN_WIDTH	1280
+# define WIN_HEIGHT	720
+
 
 //---------- ERROR MESSAGES ------------//
 
@@ -50,6 +56,7 @@ void		free_textures(t_textures *textures);
 t_cub3d		*init_cub3d(void);
 t_map		*init_map(t_cub3d *cub3d);
 t_textures	*init_textures(t_cub3d *cub3d);
+void		init_window(t_cub3d *cub);
 
 //parsing
 	//get_info

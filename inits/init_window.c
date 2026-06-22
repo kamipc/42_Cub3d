@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 11:00:16 by sade-ara          #+#    #+#             */
-/*   Updated: 2026/06/08 11:00:16 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/06/22 15:44:51 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_window(t_cub3d *cub)
 {
 	cub->win = mlx_new_window(
 		cub->mlx,
-		1280,
-		720,
+		WIN_WIDTH,
+		WIN_HEIGHT,
 		"Cub3D"
 	);
 	if (!cub->win)
