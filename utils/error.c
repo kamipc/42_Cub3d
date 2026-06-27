@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:36:41 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/05/22 15:36:41 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/06/27 14:13:48 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void call_error(t_cub3d *cub3d, char *msg)
 {
 	printf("Error: %s", msg);
-	free_cub3d(cub3d);
+	if(cub3d)
+		free_cub3d(cub3d);
 	exit(1);
 }

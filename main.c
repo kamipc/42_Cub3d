@@ -6,7 +6,7 @@
 /*   By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:35:21 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/22 15:45:07 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/06/27 14:22:52 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,22 @@
 
 int main(int ac, char **av)
 {
-	t_cub3d	*cub3d;
+	//t_cub3d	*cub3d;
+	(void)av;
+	(void)ac;
 
+	t_cub3d *cub3d = NULL; //for test
+	cub3d = init_cub3d(); //for test
+	if (!cub3d)
+		return (1);
+
+	/** 
+	test windonws
 	if (ac != 2)
 		call_error(cub3d, ERROR_ARG);
 	cub3d = init_cub3d();
 	if (!cub3d->map_filename)
-		call_error(cub3d, strerror(errno));
+		call_error(cub3d, strerror(errno)); **/
 	
 	init_window(cub3d);
 
