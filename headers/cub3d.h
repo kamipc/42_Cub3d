@@ -6,7 +6,7 @@
 /*   By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:21:26 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/22 15:41:38 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/06/27 14:51:56 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # define WIN_WIDTH	1280
 # define WIN_HEIGHT	720
 
+//--------------- KEYS -----------------//
+
+# define KEY_ESC 65307
 
 //---------- ERROR MESSAGES ------------//
 
@@ -92,5 +95,8 @@ void		verify_map_walls(t_cub3d *cub3d);
 void		copy_map(t_cub3d *cub3d);
 
 //execution
+	//hooks
+int			close_win(t_cub3d *cub3d);
+int			key_press(int keycode, t_cub3d *cub3d);
 
 #endif

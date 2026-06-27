@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_press.c                                        :+:      :+:    :+:   */
+/*   close_win.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/27 14:45:57 by sade-ara          #+#    #+#             */
-/*   Updated: 2026/06/27 14:51:36 by sade-ara         ###   ########.fr       */
+/*   Created: 2026/06/27 14:46:21 by sade-ara          #+#    #+#             */
+/*   Updated: 2026/06/27 14:49:21 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-int	key_press(int keycode, t_cub3d *cub3d)
+int	close_win(t_cub3d *cub3d)
 {
-	if (keycode == KEY_ESC)
-		close_window(cub3d);
+	mlx_destroy_window(cub3d->mlx, cub3d->win);
+	mlx_destroy_display(cub3d->mlx);
+	free(cub3d->mlx);
+	free_cub3d(cub3d);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
