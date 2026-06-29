@@ -101,5 +101,6 @@ int			close_win(t_cub3d *cub3d);
 int			key_press(int keycode, t_cub3d *cub3d);
 	//render
 void		pixel_put(t_img *img, int x, int y, int color)
+void		start_game(t_cub3d *cub3d)
 
 #endif

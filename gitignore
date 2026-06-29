@@ -1,0 +1,20 @@
+# Editor / IDE
+.vscode/
+
+# MinilibX
+minilibx-linux/
+
+# Compiled objects and binaries
+*.o
+*.a
+cub3d
+
+# Dependency files
+*.d
+
+# macOS
+.DS_Store
+
+# Vim swap files
+*.swp
+*.swo
