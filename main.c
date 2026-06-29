@@ -12,32 +12,34 @@
 
 #include "headers/cub3d.h"
 
-int main(int ac, char **av)
-{
-	//t_cub3d	*cub3d;
-	(void)av;
-	(void)ac;
+// main execution test
 
-	t_cub3d *cub3d = NULL; //for test
-	cub3d = init_cub3d(); //for test
+int	main(int ac, char **av)
+{
+	t_cub3d	*cub3d;
+
+	(void)ac;
+	(void)av;
+
+	cub3d = init_cub3d();
 	if (!cub3d)
 		return (1);
 
-	/** 
-	test windonws
-	if (ac != 2)
-		call_error(cub3d, ERROR_ARG);
-	cub3d = init_cub3d();
-	if (!cub3d->map_filename)
-		call_error(cub3d, strerror(errno)); **/
-	
 	init_window(cub3d);
+	init_image(cub3d);
 
-	//mlx_hook(cub3d.win, 17, 0, close_window, &cub3d);
-	//mlx_hook(cub3d.win, 2, 1L << 0, key_press, &cub3d);
+	pixel_put(&cub3d->img, 100, 100, 0xFF0000);
+
+	mlx_put_image_to_window(
+		cub3d->mlx,
+		cub3d->win,
+		cub3d->img.img,
+		0,
+		0);
+
+	mlx_hook(cub3d->win, 17, 0, close_window, cub3d);
+	mlx_hook(cub3d->win, 2, 1L << 0, key_press, cub3d);
 
 	mlx_loop(cub3d->mlx);
-	
-	//validate(cub3d);
-	return(0);
+	return (0);
 }
