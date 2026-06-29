@@ -22,7 +22,6 @@
 # include <stdbool.h> //bool
 
 # include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
 
 # include "structs.h"
 # include "../libft/libft.h"
@@ -100,7 +99,7 @@ void		copy_map(t_cub3d *cub3d);
 int			close_win(t_cub3d *cub3d);
 int			key_press(int keycode, t_cub3d *cub3d);
 	//render
-void		pixel_put(t_img *img, int x, int y, int color)
-void		start_game(t_cub3d *cub3d)
+void		pixel_put(t_img *img, int x, int y, int color);
+void		start_game(t_cub3d *cub3d);
 
 #endif

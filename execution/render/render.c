@@ -21,7 +21,7 @@ void	start_game(t_cub3d *cub3d)
 		cub3d->mlx,
 		cub3d->win,
 		cub3d->img.img, 0, 0);
-	mlx_hook(cub3d->win, 17, 0, close_window, cub3d);
+	mlx_hook(cub3d->win, 17, 0, close_win, cub3d);
 	mlx_hook(cub3d->win, 2, 1L << 0, key_press, cub3d);
 	mlx_loop(cub3d->mlx);
 }
