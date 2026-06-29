@@ -25,6 +25,9 @@ int	main(int ac, char **av)
 	if (!cub3d)
 		return (1);
 
+	/** cub3d->map_filename = ft_strdup(av[1]);
+	validate(cub3d);**/
+
 	init_window(cub3d);
 	init_image(cub3d);
 
