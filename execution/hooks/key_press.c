@@ -14,7 +14,7 @@
 
 int	key_press(int keycode, t_cub3d *cub3d)
 {
-	if (keycode == KEY_ESC)
-		close_window(cub3d);
+	if (keycode == KEY_ESC || keycode == 9)
+		close_win(cub3d);
 	return (0);
 }

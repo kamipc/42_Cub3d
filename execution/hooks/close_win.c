@@ -14,9 +14,9 @@
 
 int	close_win(t_cub3d *cub3d)
 {
+	printf("Closing window...\n");
+	mlx_destroy_image(cub3d->mlx, cub3d->img.img);
 	mlx_destroy_window(cub3d->mlx, cub3d->win);
-	mlx_destroy_display(cub3d->mlx);
-	free(cub3d->mlx);
 	free_cub3d(cub3d);
 	exit(EXIT_SUCCESS);
 	return (0);

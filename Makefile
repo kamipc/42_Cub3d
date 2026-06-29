@@ -32,7 +32,8 @@ SRC = \
 	free/free_cub3d.c \
 	free/free_map.c \
 	free/free_textures.c \
-	execution/hooks/close_window.c \
+	execution/hooks/close_win.c \
+	execution/render/render.c \
 	execution/hooks/key_press.c \
 	execution/render/pixel_put.c
 
@@ -52,6 +53,7 @@ $(NAME): $(OBJ)
 clean:
 	rm -f $(OBJ)
 	make -C $(MLX_DIR) clean
+	rm -f $(NAME)
 
 fclean: clean
 	rm -f $(NAME)
