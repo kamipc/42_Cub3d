@@ -60,6 +60,7 @@ t_cub3d		*init_cub3d(void);
 t_map		*init_map(t_cub3d *cub3d);
 t_textures	*init_textures(t_cub3d *cub3d);
 void		init_window(t_cub3d *cub);
+void		init_image(t_cub3d *cub3d);
 
 //parsing
 	//get_info
@@ -98,5 +99,7 @@ void		copy_map(t_cub3d *cub3d);
 	//hooks
 int			close_win(t_cub3d *cub3d);
 int			key_press(int keycode, t_cub3d *cub3d);
+	//render
+void		pixel_put(t_img *img, int x, int y, int color)
 
 #endif

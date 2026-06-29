@@ -21,15 +21,20 @@ INCLUDES = -Iheaders -I$(MLX_DIR)
 
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
+
 SRC = \
 	main.c \
 	inits/init_cub3d.c \
 	inits/init_window.c \
+	inits/init_image.c \
 	utils/error.c \
+	free/free_array.c \
 	free/free_cub3d.c \
 	free/free_map.c \
 	free/free_textures.c \
-	free/free_array.c
+	execution/hooks/close_window.c \
+	execution/hooks/key_press.c \
+	execution/render/pixel_put.c
 
 OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft

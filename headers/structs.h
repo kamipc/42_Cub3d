@@ -37,6 +37,7 @@ typedef struct s_cub3d
 	void		*mlx;
 	void		*win;
 	char		*map_filename;
+	t_img		img;
 	t_map		*map;
 	t_textures	*textures;
 }			t_cub3d;
@@ -49,5 +50,13 @@ typedef struct s_player
 	double	dir_y;
 }	t_player;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
 
 #endif
