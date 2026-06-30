@@ -35,7 +35,7 @@ SRC = \
 	execution/hooks/close_win.c \
 	execution/render/render.c \
 	execution/hooks/key_press.c \
-	execution/render/pixel_put.c
+	execution/render/draw.c
 
 OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft
