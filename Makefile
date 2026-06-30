@@ -34,8 +34,8 @@ SRC = \
 	free/free_textures.c \
 	execution/hooks/close_win.c \
 	execution/render/render.c \
-	execution/hooks/key_press.c \
-	execution/render/draw.c
+	execution/render/draw.c \
+	execution/hooks/key_press.c
 
 OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft

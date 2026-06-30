@@ -101,9 +101,10 @@ int			key_press(int keycode, t_cub3d *cub3d);
 	//render
 void		pixel_put(t_img *img, int x, int y, int color);
 void		clear_image(t_img *img, int color);
-void		draw_square(t_img *img, int x, int y, int color);
+void		draw_square(t_img *img, t_square square);
 void		draw_background(t_cub3d *cub3d);
+void		draw_player(t_cub3d *cub3d);
 void		start_game(t_cub3d *cub3d);
-int		render(t_cub3d *cub3d);
+int			render(t_cub3d *cub3d);
 
 #endif

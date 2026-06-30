@@ -32,6 +32,14 @@ typedef struct s_textures
 	char	*C;
 }			t_textures;
 
+typedef struct s_square
+{
+	int	x;
+	int	y;
+	int	size;
+	int	color;
+}	t_square;
+
 typedef struct s_map
 {
 	char	**map;
@@ -57,6 +65,7 @@ typedef struct s_cub3d
 	char		*map_filename;
 	t_img		img;
 	t_map		*map;
+	t_player	*player;
 	t_textures	*textures;
 }			t_cub3d;
 
