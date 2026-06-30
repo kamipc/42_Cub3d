@@ -27,5 +27,7 @@ void	free_cub3d(t_cub3d *cub3d)
 		free_map(cub3d->map);
 	if (cub3d->textures)
 		free_textures(cub3d->textures);
+	if (cub3d->player)
+		free(cub3d->player);
 	free(cub3d);
 }

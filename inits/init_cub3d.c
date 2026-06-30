@@ -22,6 +22,9 @@ t_cub3d	*init_cub3d(void)
 	cub3d->mlx = mlx_init();
 	if (!cub3d->mlx)
 		call_error(cub3d, strerror(errno));
+	cub3d->player = malloc(sizeof(t_player));
+	if (!cub3d->player)
+		call_error(cub3d, strerror(errno));
 	cub3d->map_filename = NULL;
 	cub3d->map = NULL;
 	cub3d->textures = NULL;

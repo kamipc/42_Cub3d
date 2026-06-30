@@ -90,7 +90,7 @@ void	draw_player(t_cub3d *cub3d)
 		x = 0;
 		while (x < 10)
 		{
-			pixel_put(&cub3d->img, (int)cub3d->player->y + x,
+			pixel_put(&cub3d->img, (int)cub3d->player->x + x,
 				(int)cub3d->player->y + y, 0xFF0000);
 			x++;
 		}

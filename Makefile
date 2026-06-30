@@ -45,7 +45,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	@make -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -53,9 +54,9 @@ $(NAME): $(OBJ)
 clean:
 	rm -f $(OBJ)
 	make -C $(MLX_DIR) clean
-	rm -f $(NAME)
 
 fclean: clean
+	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all
