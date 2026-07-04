@@ -37,11 +37,17 @@ SRC = \
 	free/free_map.c \
 	free/free_textures.c \
 	execution/player/move.c \
+	execution/player/rotate.c \
 	execution/hooks/close_win.c \
 	execution/hooks/key_press.c \
 	execution/hooks/key_release.c \
 	execution/raycast/raycast.c \
+	execution/render/draw_utils.c \
+	execution/render/draw_wall.c \
 	execution/render/draw.c \
+	execution/render/gets.c \
+	execution/render/sets.c \
+	execution/render/load_textures.c \
 	execution/render/render.c \
 	execution/render/scene.c 
 

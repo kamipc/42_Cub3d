@@ -105,7 +105,8 @@ void		copy_map(t_cub3d *cub3d);
 
 //execution
 	//player
-void	move_player(t_cub3d *cub3d);
+void		move_player(t_cub3d *cub3d);
+void		rotate_player(t_cub3d *cub3d);
 	//hooks
 int			close_win(t_cub3d *cub3d);
 int			key_press(int keycode, t_cub3d *cub3d);
@@ -115,14 +116,32 @@ void		dda(t_cub3d *cub3d, t_ray *ray);
 void		calc_wall_slice(t_ray *ray);
 void		cast_rays(t_cub3d *cub3d);
 	//render
-void		pixel_put(t_img *img, int x, int y, int color);
-void		clear_image(t_img *img, int color);
+		//draw_wall.c
+void		draw_textured_column(t_cub3d *cub3d, t_tex_col *tc);
 void		draw_wall_slice(t_cub3d *cub3d, t_ray *ray, int x);
+void		draw_ceiling(t_cub3d *cub3d, t_ray *ray, int x);
+void		draw_floor(t_cub3d *cub3d, t_ray *ray, int x);
+
+		//draw.c
 void		draw_square(t_img *img, t_square square);
 void		draw_background(t_cub3d *cub3d);
 void		draw_player(t_cub3d *cub3d);
-void		start_game(t_cub3d *cub3d);
+		//gets.c
+t_img		*get_texture(t_cub3d *cub3d, t_ray *ray);
+double		get_wall_x(t_player *player, t_ray *ray);
+int			get_tex_x(t_img *tex, t_ray *ray, double wall_x);
+int			get_tex_pixel(t_img *tex, int x, int y);
+		//load_textures.c
+void		load_texture_images(t_cub3d *cub3d);
+		//sets.c
+void		set_tex_step(t_tex_col *tc, t_ray *ray);
+		//render.c
 int			render(t_cub3d *cub3d);
+void		start_game(t_cub3d *cub3d);
+		//scene.c
 void		load_scene(t_cub3d *cub3d, char *filename);
+		//draw_utils.c
+void		pixel_put(t_img *img, int x, int y, int color);
+void		clear_image(t_img *img, int color);
 
 #endif

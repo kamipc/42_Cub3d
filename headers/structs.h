@@ -6,7 +6,7 @@
 /*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:22:08 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/04 15:15:14 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/07/04 17:11:42 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,28 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
+
+typedef struct s_col
+{
+	int	x;
+	int	y_start;
+	int	y_end;
+	int	color;
+}	t_col;
+
+typedef struct s_tex_col
+{
+	int		x;
+	int		y_start;
+	int		y_end;
+	int		tex_x;
+	double	tex_pos;
+	double	step;
+	t_img	*tex;
+}	t_tex_col;
 
 typedef struct s_textures
 {
@@ -28,6 +49,10 @@ typedef struct s_textures
 	char	*SO;
 	char	*EA;
 	char	*WE;
+	t_img	img_no;
+	t_img	img_so;
+	t_img	img_ea;
+	t_img	img_we;
 	int		floor_color;
 	int		ceil_color;
 }	t_textures;
@@ -83,7 +108,6 @@ typedef struct s_player
 	double	move_speed;
 	double	rot_speed;
 }	t_player;
- 
 
 typedef struct s_keys
 {

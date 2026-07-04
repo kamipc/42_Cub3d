@@ -1,75 +1,80 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_wall.c                                        :+:      :+:    :+:   */
+/*   draw_wals.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/02 17:09:18 by sade-ara          #+#    #+#             */
-/*   Updated: 2026/07/02 17:42:40 by sade-ara         ###   ########.fr       */
+/*   Created: 2026/07/04 16:37:18 by sade-ara          #+#    #+#             */
+/*   Updated: 2026/07/04 16:37:18 by sade-ara         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-static int	get_wall_color(t_ray *ray)
-{
-	if (ray->side == 0)
-	{
-		if (ray->step_x > 0)
-			return (0x008000);
-		return (0x00CC00);
-	}
-	if (ray->step_y > 0)
-		return (0xCC0000);
-	return (0xFF4444);
-}
-
-static int	draw_ceiling(t_cub3d *cub3d, int x, int end)
+static void	fill_column(t_cub3d *cub3d, t_col *col)
 {
 	int	y;
 
-	y = 0;
-	while (y < end)
+	y = col->y_start;
+	while (y < col->y_end)
 	{
-		pixel_put(&cub3d->img, x, y,
-			cub3d->textures->ceil_color);
+		pixel_put(&cub3d->img, col->x, y, col->color);
 		y++;
 	}
-	return (y);
 }
 
-static int	draw_wall(t_cub3d *cub3d, t_ray *ray,
-	int x, int color)
+void	draw_textured_column(t_cub3d *cub3d, t_tex_col *tc)
 {
 	int	y;
+	int	tex_y;
 
-	y = ray->draw_start;
-	while (y <= ray->draw_end)
+	y = tc->y_start;
+	while (y <= tc->y_end)
 	{
-		pixel_put(&cub3d->img, x, y, color);
+		tex_y = (int)tc->tex_pos % tc->tex->height;
+		tc->tex_pos += tc->step;
+		pixel_put(&cub3d->img, tc->x, y,
+			get_tex_pixel(tc->tex, tc->tex_x, tex_y));
 		y++;
 	}
-	return (y);
 }
 
-static void	draw_floor(t_cub3d *cub3d, int x, int start)
+void	draw_ceiling(t_cub3d *cub3d, t_ray *ray, int x)
 {
-	while (start < WIN_HEIGHT)
-	{
-		pixel_put(&cub3d->img, x, start,
-			cub3d->textures->floor_color);
-		start++;
-	}
+	t_col	col;
+
+	col.x = x;
+	col.y_start = 0;
+	col.y_end = ray->draw_start;
+	col.color = cub3d->textures->ceil_color;
+	fill_column(cub3d, &col);
+}
+
+void	draw_floor(t_cub3d *cub3d, t_ray *ray, int x)
+{
+	t_col	col;
+
+	col.x = x;
+	col.y_start = ray->draw_end + 1;
+	col.y_end = WIN_HEIGHT;
+	col.color = cub3d->textures->floor_color;
+	fill_column(cub3d, &col);
 }
 
 void	draw_wall_slice(t_cub3d *cub3d, t_ray *ray, int x)
 {
-	int	color;
-	int	y;
+	t_tex_col	tc;
+	double		wall_x;
 
-	color = get_wall_color(ray);
-	y = draw_ceiling(cub3d, x, ray->draw_start);
-	y = draw_wall(cub3d, ray, x, color);
-	draw_floor(cub3d, x, y);
+	draw_ceiling(cub3d, ray, x);
+	draw_floor(cub3d, ray, x);
+	tc.tex = get_texture(cub3d, ray);
+	wall_x = get_wall_x(cub3d->player, ray);
+	tc.tex_x = get_tex_x(tc.tex, ray, wall_x);
+	tc.x = x;
+	tc.y_start = ray->draw_start;
+	tc.y_end = ray->draw_end;
+	set_tex_step(&tc, ray);
+	draw_textured_column(cub3d, &tc);
 }
