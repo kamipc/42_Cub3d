@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:21:26 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/27 14:51:56 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/07/02 17:59:36 by sade-ara         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -20,6 +20,7 @@
 # include <fcntl.h> //open
 # include <sys/time.h> //gettimeofday
 # include <stdbool.h> //bool
+#include <math.h>
 
 # include "../minilibx-linux/mlx.h"
 
@@ -60,11 +61,12 @@ t_map		*init_map(t_cub3d *cub3d);
 t_textures	*init_textures(t_cub3d *cub3d);
 void		init_window(t_cub3d *cub);
 void		init_image(t_cub3d *cub3d);
+void		init_ray(t_cub3d *cub3d, t_ray *ray, int x);
 
 //parsing
 	//get_info
-void	get_info(t_cub3d *cub3d);
-void	save_info(t_cub3d *cub3d);
+void		get_info(t_cub3d *cub3d);
+void		save_info(t_cub3d *cub3d);
 	//validate
 void		validate(t_cub3d *cub3d);
 	//validate_file
@@ -98,13 +100,21 @@ void		copy_map(t_cub3d *cub3d);
 	//hooks
 int			close_win(t_cub3d *cub3d);
 int			key_press(int keycode, t_cub3d *cub3d);
+	//raycast
+void		dda(t_cub3d *cub3d, t_ray *ray);
+void		calc_wall_slice(t_ray *ray);
+void		cast_rays(t_cub3d *cub3d);
+
+
 	//render
 void		pixel_put(t_img *img, int x, int y, int color);
 void		clear_image(t_img *img, int color);
+void		draw_wall_slice(t_cub3d *cub3d, t_ray *ray, int x);
 void		draw_square(t_img *img, t_square square);
 void		draw_background(t_cub3d *cub3d);
 void		draw_player(t_cub3d *cub3d);
 void		start_game(t_cub3d *cub3d);
 int			render(t_cub3d *cub3d);
+void		load_textures(t_cub3d *cub3d);
 
 #endif

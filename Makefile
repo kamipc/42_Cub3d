@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sade-ara <sade-ara@student.42.fr>          +#+  +:+       +#+         #
+#    By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/22 19:47:17 by cpinho-c          #+#    #+#              #
-#    Updated: 2026/06/27 14:17:51 by sade-ara         ###   ########.fr        #
+#    Updated: 2026/07/02 18:00:03 by sade-ara         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME = cub3d
 
@@ -25,17 +25,26 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 SRC = \
 	main.c \
 	inits/init_cub3d.c \
-	inits/init_window.c \
 	inits/init_image.c \
+	inits/init_map.c \
+	inits/init_player.c \
+	inits/init_textures.c \
+	inits/init_window.c \
+	inits/init_ray.c \
 	utils/error.c \
 	free/free_array.c \
 	free/free_cub3d.c \
 	free/free_map.c \
 	free/free_textures.c \
 	execution/hooks/close_win.c \
-	execution/render/render.c \
+	execution/hooks/key_press.c \
+	execution/hooks/key_release.c \
+	execution/raycast/dda.c \
+	execution/raycast/raycast.c \
+	execution/render/draw_wall.c \
 	execution/render/draw.c \
-	execution/hooks/key_press.c
+	execution/render/render.c \
+	execution/render/textures.c 
 
 OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft
