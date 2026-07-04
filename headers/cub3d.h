@@ -33,8 +33,14 @@
 # define WIN_HEIGHT	720
 
 //--------------- KEYS -----------------//
-
-# define KEY_ESC 65307
+ 
+# define KEY_ESC	65307
+# define KEY_W		119
+# define KEY_A		97
+# define KEY_S		115
+# define KEY_D		100
+# define KEY_LEFT	65361
+# define KEY_RIGHT	65363
 
 //---------- ERROR MESSAGES ------------//
 
@@ -62,6 +68,7 @@ t_textures	*init_textures(t_cub3d *cub3d);
 void		init_window(t_cub3d *cub);
 void		init_image(t_cub3d *cub3d);
 void		init_ray(t_cub3d *cub3d, t_ray *ray, int x);
+void		init_player(t_cub3d *cub3d);
 
 //parsing
 	//get_info
@@ -97,15 +104,16 @@ void		verify_map_walls(t_cub3d *cub3d);
 void		copy_map(t_cub3d *cub3d);
 
 //execution
+	//player
+void	move_player(t_cub3d *cub3d);
 	//hooks
 int			close_win(t_cub3d *cub3d);
 int			key_press(int keycode, t_cub3d *cub3d);
+int			key_release(int keycode, t_cub3d *cub3d);
 	//raycast
 void		dda(t_cub3d *cub3d, t_ray *ray);
 void		calc_wall_slice(t_ray *ray);
 void		cast_rays(t_cub3d *cub3d);
-
-
 	//render
 void		pixel_put(t_img *img, int x, int y, int color);
 void		clear_image(t_img *img, int color);
@@ -115,6 +123,6 @@ void		draw_background(t_cub3d *cub3d);
 void		draw_player(t_cub3d *cub3d);
 void		start_game(t_cub3d *cub3d);
 int			render(t_cub3d *cub3d);
-void		load_textures(t_cub3d *cub3d);
+void		load_scene(t_cub3d *cub3d, char *filename);
 
 #endif

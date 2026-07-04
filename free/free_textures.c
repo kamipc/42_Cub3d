@@ -16,10 +16,6 @@ void	free_textures(t_textures *textures)
 {
 	if (!textures)
 		return ;
-	if (textures->C)
-		free(textures->C);
-	if (textures->F)
-		free(textures->F);
 	if (textures->EA)
 		free(textures->EA);
 	if (textures->WE)

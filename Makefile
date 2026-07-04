@@ -36,15 +36,14 @@ SRC = \
 	free/free_cub3d.c \
 	free/free_map.c \
 	free/free_textures.c \
+	execution/player/move.c \
 	execution/hooks/close_win.c \
 	execution/hooks/key_press.c \
 	execution/hooks/key_release.c \
-	execution/raycast/dda.c \
 	execution/raycast/raycast.c \
-	execution/render/draw_wall.c \
 	execution/render/draw.c \
 	execution/render/render.c \
-	execution/render/textures.c 
+	execution/render/scene.c 
 
 OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft
