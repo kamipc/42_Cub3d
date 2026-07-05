@@ -123,7 +123,6 @@ Its usage included:
 - Explaining raycasting mathematics and rendering concepts.
 - Reviewing parsing logic and edge cases.
 - Clarifying MiniLibX behavior and graphics-related functions.
-- Suggesting code improvements and refactoring ideas.
 - Assisting with project documentation (README).
 
 All architectural decisions, implementation, debugging validation, and final code were designed, reviewed, tested, and validated by the project authors.
