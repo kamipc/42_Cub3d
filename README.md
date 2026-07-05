@@ -72,29 +72,40 @@ Example:
 
 ```
 .
-├── parsing/
-├── rendering/
-├── hooks/
-├── utils/
-├── mlx/
-├── maps/
-├── textures/
-├── includes/
-├── libft/
-└── main.c
+├── execution/          # Main execution loop
+├── hooks/              # Keyboard and window event handling
+├── player/             # Player movement and camera
+├── raycast/            # Raycasting calculations
+├── render/             # Scene rendering and drawing
+├── free/               # Memory cleanup
+├── headers/            # Header files
+├── inits/              # Program and game initialization
+├── libft/              # Custom C library
+├── maps/               # Example .cub maps and texture
+├── minilibx-linux/     # MiniLibX library
+├── parsing/            # Parsing and validation of .cub files
+├── utils/              # Utility functions
+├── main.c              # Program entry point
+├── Makefile
+└── README.md
 ```
 
 ---
 
 # Technical Overview
 
-The project is divided into several modules:
+The project is organized into independent modules to improve readability and maintenance.
 
-- **Parsing** – Reads and validates the `.cub` configuration file.
-- **Rendering** – Implements the raycasting algorithm and draws the scene.
-- **Textures** – Loads XPM textures and maps them onto walls.
-- **Hooks** – Handles keyboard events and player movement.
-- **Utils** – Auxiliary functions used throughout the project.
+- **execution/** – Controls the main game loop.
+- **hooks/** – Handles keyboard input and window events.
+- **player/** – Updates player movement, rotation and collision checks.
+- **raycast/** – Performs the raycasting algorithm to determine visible walls.
+- **render/** – Draws walls, floor, ceiling and textures using MiniLibX.
+- **parsing/** – Reads, validates and stores the `.cub` configuration file.
+- **inits/** – Initializes the game structures, textures and graphics.
+- **free/** – Releases allocated memory and destroys resources before exiting.
+- **utils/** – Shared helper functions used across the project.
+- **libft/** – Custom utility library developed during the 42 curriculum.
 
 ---
 
