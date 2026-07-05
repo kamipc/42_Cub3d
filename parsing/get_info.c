@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:33:03 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 18:49:22 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/05 10:37:42 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	save_info(t_cub3d *cub3d)
 	int		fd;
 	char	*line;
 	bool	map_start_found;
-	int		i;
 
-	i = 0;
 	map_start_found = false;
 	fd = open(cub3d->map_filename, O_RDONLY);
 	if (fd < 0)

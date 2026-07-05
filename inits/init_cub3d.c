@@ -19,17 +19,15 @@ t_cub3d	*init_cub3d(void)
 	cub3d = malloc(sizeof(t_cub3d));
 	if (!cub3d)
 		call_error(NULL, strerror(errno));
+	ft_memset(cub3d, 0, sizeof(t_cub3d));
 	cub3d->mlx = mlx_init();
 	if (!cub3d->mlx)
 		call_error(cub3d, strerror(errno));
 	cub3d->player = malloc(sizeof(t_player));
 	if (!cub3d->player)
 		call_error(cub3d, strerror(errno));
-	// cub3d->map_filename = NULL;
-	// cub3d->map = NULL;
-	// cub3d->textures = NULL;
+	ft_memset(cub3d->player, 0, sizeof(t_player));
 	cub3d->map = init_map(cub3d);
 	cub3d->textures = init_textures(cub3d);
-	//cub3d->player = init_player(cub3d);
 	return (cub3d);
 }

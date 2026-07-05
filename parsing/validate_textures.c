@@ -12,8 +12,6 @@
 
 #include "../headers/cub3d.h"
 
-
-
 //try to render imgs to verify they are valid
 bool	img_is_valid(t_cub3d *cub3d, char *path)
 {
@@ -47,10 +45,9 @@ bool	verify_imgs(t_cub3d *cub3d)
 
 void	validate_textures(t_cub3d *cub3d)
 {
-	if((!cub3d->textures->NO) || (!cub3d->textures->SO)
-		|| (!cub3d->textures->EA) || (!cub3d->textures->WE)
-		/* || (cub3d->textures->C) || (!cub3d->textures->F)*/)
-		call_error(cub3d,ERROR_MISS_TEXT);
-	// if (!verify_imgs(cub3d))
-	// 	call_error(cub3d, ERROR_INV_TEXT);
+	if ((!cub3d->textures->NO) || (!cub3d->textures->SO)
+		|| (!cub3d->textures->EA) || (!cub3d->textures->WE))
+		call_error(cub3d, ERROR_MISS_TEXT);
+	if (!verify_imgs(cub3d))
+		call_error(cub3d, ERROR_INV_TEXT);
 }

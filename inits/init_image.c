@@ -14,13 +14,9 @@
 
 void	init_image(t_cub3d *cub3d)
 {
-	cub3d->img.img = mlx_new_image(
-		cub3d->mlx,
-		WIN_WIDTH,
-		WIN_HEIGHT);
-	cub3d->img.addr = mlx_get_data_addr(
-		cub3d->img.img,
-		&cub3d->img.bpp,
-		&cub3d->img.line_len,
-		&cub3d->img.endian);
+	cub3d->img.img = mlx_new_image(cub3d->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!cub3d->img.img)
+		call_error(cub3d, "image error");
+	cub3d->img.addr = mlx_get_data_addr(cub3d->img.img, &cub3d->img.bpp,
+			&cub3d->img.line_len, &cub3d->img.endian);
 }

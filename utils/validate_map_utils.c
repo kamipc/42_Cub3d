@@ -22,7 +22,7 @@ bool	not_valid_character(char c)
 
 bool	is_player_start(char c, int *playernum)
 {
-	if ((c != 'N') || (c != 'S') || (c != 'W') || (c != 'E'))
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
 		(*playernum)++;
 		return (true);
@@ -32,8 +32,8 @@ bool	is_player_start(char c, int *playernum)
 
 void	verify_map_characters(t_cub3d *cub3d)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 	int	playernum;
 
 	i = 0;
@@ -46,15 +46,17 @@ void	verify_map_characters(t_cub3d *cub3d)
 			if (not_valid_character(cub3d->map->map[i][j]))
 				call_error(cub3d, ERROR_MAP_CHAR);
 			if (is_player_start(cub3d->map->map[i][j], &playernum))
-				{
-					if (playernum > 1)
-						call_error(cub3d, ERROR_MAP_PLAYER);
-					cub3d->map->player_start_dir = cub3d->map->map[i][j];
-					cub3d->map->player_x = i;
-					cub3d->map->player_y = j;
-				}
+			{
+				if (playernum > 1)
+					call_error(cub3d, ERROR_MAP_PLAYER);
+				cub3d->map->player_start_dir = cub3d->map->map[i][j];
+				cub3d->map->player_x = j;
+				cub3d->map->player_y = i;
+			}
 			j++;
 		}
 		i++;
 	}
+	if (playernum == 0)
+		call_error(cub3d, ERROR_MAP_PLAYER);
 }

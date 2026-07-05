@@ -16,6 +16,6 @@ void	validate(t_cub3d *cub3d)
 {
 	validate_file(cub3d);
 	get_info(cub3d);
-	//validate_textures(cub3d);
-	//validate_map(cub3d);
+	validate_textures(cub3d);
+	validate_map(cub3d);
 }

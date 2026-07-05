@@ -28,10 +28,13 @@ SRC = \
 	inits/init_image.c \
 	inits/init_map.c \
 	inits/init_player.c \
+	inits/init_ray.c \
 	inits/init_textures.c \
 	inits/init_window.c \
-	inits/init_ray.c \
 	utils/error.c \
+	utils/get_info_utils.c \
+	utils/validate_map_utils.c \
+	utils/validate_map_utils2.c \
 	free/free_array.c \
 	free/free_cub3d.c \
 	free/free_map.c \
@@ -46,10 +49,16 @@ SRC = \
 	execution/render/draw_wall.c \
 	execution/render/draw.c \
 	execution/render/gets.c \
-	execution/render/sets.c \
 	execution/render/load_textures.c \
 	execution/render/render.c \
-	execution/render/scene.c 
+	execution/render/sets.c \
+	execution/render/scene.c \
+	parsing/get_info.c \
+	parsing/save_color.c \
+	parsing/validate_file.c \
+	parsing/validate_map.c \
+	parsing/validate_textures.c \
+	parsing/validate.c 
 
 OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft

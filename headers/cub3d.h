@@ -20,7 +20,8 @@
 # include <fcntl.h> //open
 # include <sys/time.h> //gettimeofday
 # include <stdbool.h> //bool
-#include <math.h>
+# include <math.h>
+# include <errno.h>
 
 # include "../minilibx-linux/mlx.h"
 
@@ -84,6 +85,8 @@ bool		verify_imgs(t_cub3d *cub3d);
 bool		img_is_valid(t_cub3d *cub3d, char *path);
 	//validate_map
 void		validate_map(t_cub3d *cub3d);
+	//save_color
+bool		save_color(t_cub3d *cub3d, char *line, char *type);
 
 //src
 
