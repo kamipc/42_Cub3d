@@ -17,12 +17,12 @@ t_img	*get_texture(t_cub3d *cub3d, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->step_x > 0)
-			return (&cub3d->textures->img_we);
-		return (&cub3d->textures->img_ea);
+			return (&cub3d->textures->img_ea);
+		return (&cub3d->textures->img_we);
 	}
 	if (ray->step_y > 0)
-		return (&cub3d->textures->img_so);
-	return (&cub3d->textures->img_no);
+		return (&cub3d->textures->img_no);
+	return (&cub3d->textures->img_so);
 }
 
 double	get_wall_x(t_player *player, t_ray *ray)

@@ -60,7 +60,7 @@
 void		free_cub3d(t_cub3d *cub3d);
 void		free_array(char **array);
 void		free_map(t_map *map);
-void		free_textures(t_textures *textures);
+void		free_textures(void *mlx, t_textures *textures);
 
 //inits
 t_cub3d		*init_cub3d(void);
@@ -141,8 +141,6 @@ void		set_tex_step(t_tex_col *tc, t_ray *ray);
 		//render.c
 int			render(t_cub3d *cub3d);
 void		start_game(t_cub3d *cub3d);
-		//scene.c
-void		load_scene(t_cub3d *cub3d, char *filename);
 		//draw_utils.c
 void		pixel_put(t_img *img, int x, int y, int color);
 void		clear_image(t_img *img, int color);

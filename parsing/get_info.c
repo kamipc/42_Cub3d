@@ -16,25 +16,25 @@ void	save_info(t_cub3d *cub3d)
 {
 	int		fd;
 	char	*line;
-	bool	map_start_found;
+	bool	map_found;
+	int		i;
 
-	map_start_found = false;
+	i = 0;
+	map_found = false;
 	fd = open(cub3d->map_filename, O_RDONLY);
 	if (fd < 0)
 		call_error(cub3d, strerror(errno));
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (save_textures(cub3d, line))
-			continue ;
-		if (is_map_start(line))
-			map_start_found = true;
-		if (!map_start_found)
+		if (!map_found && save_textures(cub3d, line))
+			;
+		else if (map_found || is_map_start(line))
 		{
-			if (is_junk(line))
-				call_error(cub3d, ERROR_JUNK_INFO);
+			map_found = true;
+			save_map(cub3d, line, &i);
 		}
-		else
-			//save_map(cub3d, line, &i);
+		else if (is_junk(line))
+			call_error(cub3d, ERROR_JUNK_INFO);
 		free(line);
 	}
 	close(fd);

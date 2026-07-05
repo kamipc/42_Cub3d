@@ -52,7 +52,6 @@ SRC = \
 	execution/render/load_textures.c \
 	execution/render/render.c \
 	execution/render/sets.c \
-	execution/render/scene.c \
 	parsing/get_info.c \
 	parsing/save_color.c \
 	parsing/validate_file.c \

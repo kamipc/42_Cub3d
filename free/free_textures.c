@@ -12,17 +12,28 @@
 
 #include "../headers/cub3d.h"
 
-void	free_textures(t_textures *textures)
+static void	destroy_texture_images(void *mlx, t_textures *tex)
+{
+	if (!mlx)
+		return ;
+	if (tex->img_no.img)
+		mlx_destroy_image(mlx, tex->img_no.img);
+	if (tex->img_so.img)
+		mlx_destroy_image(mlx, tex->img_so.img);
+	if (tex->img_ea.img)
+		mlx_destroy_image(mlx, tex->img_ea.img);
+	if (tex->img_we.img)
+		mlx_destroy_image(mlx, tex->img_we.img);
+}
+
+void	free_textures(void *mlx, t_textures *textures)
 {
 	if (!textures)
 		return ;
-	if (textures->EA)
-		free(textures->EA);
-	if (textures->WE)
-		free(textures->WE);
-	if (textures->NO)
-		free(textures->NO);
-	if (textures->SO)
-		free(textures->SO);
+	destroy_texture_images(mlx, textures);
+	free(textures->EA);
+	free(textures->WE);
+	free(textures->NO);
+	free(textures->SO);
 	free(textures);
 }

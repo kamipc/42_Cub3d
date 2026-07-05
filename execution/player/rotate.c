@@ -14,7 +14,7 @@
 
 static double	get_rot_speed(t_cub3d *cub3d)
 {
-	if (cub3d->keys.right)
+	if (cub3d->keys.left)
 		return (-cub3d->player->rot_speed);
 	return (cub3d->player->rot_speed);
 }
