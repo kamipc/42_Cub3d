@@ -24,7 +24,8 @@ void	save_info(t_cub3d *cub3d)
 	fd = open(cub3d->map_filename, O_RDONLY);
 	if (fd < 0)
 		call_error(cub3d, strerror(errno));
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (!map_found && save_textures(cub3d, line))
 			;

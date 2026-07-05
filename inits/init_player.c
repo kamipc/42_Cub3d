@@ -11,20 +11,8 @@
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
- 
-/*
-** Direções e planos de câmara por orientação inicial:
-**
-** Norte: dir=(0,-1)  plane=(0.66, 0)
-** Sul:   dir=(0, 1)  plane=(-0.66, 0)
-** Este:  dir=(1, 0)  plane=(0, 0.66)
-** Oeste: dir=(-1, 0) plane=(0, -0.66)
-**
-** O plane define o FOV (~66° com magnitude 0.66).
-** É perpendicular ao vetor dir.
-*/
- 
-static void	set_direction(t_player *p, char dir)
+
+static void	set_north_south(t_player *p, char dir)
 {
 	if (dir == 'N')
 	{
@@ -40,7 +28,11 @@ static void	set_direction(t_player *p, char dir)
 		p->plane_x = -0.66;
 		p->plane_y = 0;
 	}
-	else if (dir == 'E')
+}
+
+static void	set_east_west(t_player *p, char dir)
+{
+	if (dir == 'E')
 	{
 		p->dir_x = 1;
 		p->dir_y = 0;
@@ -56,16 +48,16 @@ static void	set_direction(t_player *p, char dir)
 	}
 }
 
-/*
-** Posição inicial: centro da célula do mapa onde está o jogador.
-** player_x e player_y são índices do array do mapa.
-** Adicionamos 0.5 para ficar no centro da célula.
-*/
+static void	set_direction(t_player *p, char dir)
+{
+	set_north_south(p, dir);
+	set_east_west(p, dir);
+}
 
 void	init_player(t_cub3d *cub3d)
 {
 	t_player	*p;
- 
+
 	p = cub3d->player;
 	p->x = cub3d->map->player_x + 0.5;
 	p->y = cub3d->map->player_y + 0.5;

@@ -27,13 +27,13 @@ bool	trim_path(t_textures *textures, char *line, char *type)
 	if (!trimmed)
 		return (false);
 	if (ft_strncmp(type, "NO", 2) == 0)
-		textures->NO = trimmed;
+		textures->no = trimmed;
 	else if (ft_strncmp(type, "SO", 2) == 0)
-		textures->SO = trimmed;
+		textures->so = trimmed;
 	else if (ft_strncmp(type, "EA", 2) == 0)
-		textures->EA = trimmed;
+		textures->ea = trimmed;
 	else
-		textures->WE = trimmed;
+		textures->we = trimmed;
 	return (true);
 }
 

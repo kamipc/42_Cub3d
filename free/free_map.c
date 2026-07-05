@@ -14,7 +14,7 @@
 
 void	free_map(t_map *map)
 {
-	if(!map)
+	if (!map)
 		return ;
 	if (map->copy_map)
 		free_array(map->copy_map);

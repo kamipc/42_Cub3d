@@ -12,7 +12,6 @@
 
 #include "../headers/cub3d.h"
 
-//try to render imgs to verify they are valid
 bool	img_is_valid(t_cub3d *cub3d, char *path)
 {
 	int		h;
@@ -25,28 +24,24 @@ bool	img_is_valid(t_cub3d *cub3d, char *path)
 	mlx_destroy_image(cub3d->mlx, img);
 	return (true);
 }
-//send every texture path to try to render
+
 bool	verify_imgs(t_cub3d *cub3d)
 {
-	// if (!img_is_valid(cub3d, cub3d->textures->C))
-	// 	return (false);
-	// if (!img_is_valid(cub3d, cub3d->textures->F))
-	// 	return (false);
-	if (!img_is_valid(cub3d, cub3d->textures->NO))
+	if (!img_is_valid(cub3d, cub3d->textures->no))
 		return (false);
-	if (!img_is_valid(cub3d, cub3d->textures->SO))
+	if (!img_is_valid(cub3d, cub3d->textures->so))
 		return (false);
-	if (!img_is_valid(cub3d, cub3d->textures->EA))
+	if (!img_is_valid(cub3d, cub3d->textures->ea))
 		return (false);
-	if (!img_is_valid(cub3d, cub3d->textures->WE))
+	if (!img_is_valid(cub3d, cub3d->textures->we))
 		return (false);
 	return (true);
 }
 
 void	validate_textures(t_cub3d *cub3d)
 {
-	if ((!cub3d->textures->NO) || (!cub3d->textures->SO)
-		|| (!cub3d->textures->EA) || (!cub3d->textures->WE))
+	if ((!cub3d->textures->no) || (!cub3d->textures->so)
+		|| (!cub3d->textures->ea) || (!cub3d->textures->we))
 		call_error(cub3d, ERROR_MISS_TEXT);
 	if (!verify_imgs(cub3d))
 		call_error(cub3d, ERROR_INV_TEXT);

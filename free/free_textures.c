@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   free_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:48:43 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/02 17:40:13 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/07/05 17:43:00 by sade-ara         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
@@ -31,9 +31,9 @@ void	free_textures(void *mlx, t_textures *textures)
 	if (!textures)
 		return ;
 	destroy_texture_images(mlx, textures);
-	free(textures->EA);
-	free(textures->WE);
-	free(textures->NO);
-	free(textures->SO);
+	free(textures->ea);
+	free(textures->we);
+	free(textures->no);
+	free(textures->so);
 	free(textures);
 }

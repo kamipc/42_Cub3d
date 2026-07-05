@@ -6,7 +6,7 @@
 /*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:22:08 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/04 17:11:42 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/07/05 17:47:30 by sade-ara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct s_tex_col
 
 typedef struct s_textures
 {
-	char	*NO;
-	char	*SO;
-	char	*EA;
-	char	*WE;
+	char	*no;
+	char	*so;
+	char	*ea;
+	char	*we;
 	t_img	img_no;
 	t_img	img_so;
 	t_img	img_ea;
@@ -96,7 +96,7 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 }	t_ray;
- 
+
 typedef struct s_player
 {
 	double	x;
@@ -118,7 +118,7 @@ typedef struct s_keys
 	int	left;
 	int	right;
 }	t_keys;
- 
+
 typedef struct s_cub3d
 {
 	void		*mlx;
@@ -130,5 +130,5 @@ typedef struct s_cub3d
 	t_textures	*textures;
 	t_keys		keys;
 }	t_cub3d;
- 
+
 #endif

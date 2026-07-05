@@ -14,12 +14,7 @@
 
 void	init_window(t_cub3d *cub)
 {
-	cub->win = mlx_new_window(
-		cub->mlx,
-		WIN_WIDTH,
-		WIN_HEIGHT,
-		"Cub3D"
-	);
+	cub->win = mlx_new_window(cub->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	if (!cub->win)
 		call_error(cub, "window error");
 }

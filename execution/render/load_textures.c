@@ -24,8 +24,8 @@ static void	load_one_texture(t_cub3d *cub3d, char *path, t_img *img)
 
 void	load_texture_images(t_cub3d *cub3d)
 {
-	load_one_texture(cub3d, cub3d->textures->NO, &cub3d->textures->img_no);
-	load_one_texture(cub3d, cub3d->textures->SO, &cub3d->textures->img_so);
-	load_one_texture(cub3d, cub3d->textures->EA, &cub3d->textures->img_ea);
-	load_one_texture(cub3d, cub3d->textures->WE, &cub3d->textures->img_we);
+	load_one_texture(cub3d, cub3d->textures->no, &cub3d->textures->img_no);
+	load_one_texture(cub3d, cub3d->textures->so, &cub3d->textures->img_so);
+	load_one_texture(cub3d, cub3d->textures->ea, &cub3d->textures->img_ea);
+	load_one_texture(cub3d, cub3d->textures->we, &cub3d->textures->img_we);
 }

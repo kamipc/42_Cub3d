@@ -12,10 +12,10 @@
 
 #include "../headers/cub3d.h"
 
-void call_error(t_cub3d *cub3d, char *msg)
+void	call_error(t_cub3d *cub3d, char *msg)
 {
 	printf("Error: %s", msg);
-	if(cub3d)
+	if (cub3d)
 		free_cub3d(cub3d);
 	exit(1);
 }
