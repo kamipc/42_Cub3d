@@ -46,14 +46,14 @@ static void	move_strafe(t_cub3d *cub3d)
 	p = cub3d->player;
 	spd = p->move_speed;
 	map = cub3d->map->map;
-	if (cub3d->keys.a)
+	if (cub3d->keys.d)
 	{
 		if (map[(int)p->y][(int)(p->x - p->dir_y * spd)] != '1')
 			p->x -= p->dir_y * spd;
 		if (map[(int)(p->y + p->dir_x * spd)][(int)p->x] != '1')
 			p->y += p->dir_x * spd;
 	}
-	if (cub3d->keys.d)
+	if (cub3d->keys.a)
 	{
 		if (map[(int)p->y][(int)(p->x + p->dir_y * spd)] != '1')
 			p->x += p->dir_y * spd;
