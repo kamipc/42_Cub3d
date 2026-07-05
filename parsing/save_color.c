@@ -58,7 +58,7 @@ bool	save_color(t_cub3d *cub3d, char *line, char *type)
 		return (false);
 	if (line[len] != ' ' && line[len] != '\t')
 		return (false);
-	trimmed = ft_strtrim(line + len, " \t\n");
+	trimmed = ft_strtrim(line + len, " \t\n\r");
 	if (!trimmed || !parse_rgb(trimmed, &packed))
 		return (free(trimmed), call_error(cub3d, ERROR_JUNK_INFO), false);
 	free(trimmed);

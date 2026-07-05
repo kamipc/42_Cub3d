@@ -23,7 +23,7 @@ bool	trim_path(t_textures *textures, char *line, char *type)
 		return (false);
 	if (line[len] != ' ' && line[len] != '\t')
 		return (false);
-	trimmed = ft_strtrim(line + len, " \t\n");
+	trimmed = ft_strtrim(line + len, " \t\n\r");
 	if (!trimmed)
 		return (false);
 	if (ft_strncmp(type, "NO", 2) == 0)
@@ -91,7 +91,7 @@ void	save_map(t_cub3d *cub3d, char *line, int *i)
 	char	*clean;
 	char	**new_map;
 
-	clean = ft_strtrim(line, "\n");
+	clean = ft_strtrim(line, "\n\r");
 	if (!clean)
 		call_error(cub3d, strerror(errno));
 	new_map = ft_realloc(cub3d->map->map, (*i) * sizeof(char *),
