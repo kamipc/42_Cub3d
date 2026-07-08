@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:39:31 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 17:41:22 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/08 17:00:18 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,14 @@ int	main(int ac, char **av)
 	cub3d = init_cub3d();
 	cub3d->map_filename = ft_strdup(av[1]);
 	validate_file(cub3d);
-	validate_textures(cub3d);
-	//------print
-	print_cub3d(cub3d);
-	//------
-	if (!verify_imgs(cub3d))
-		call_error(cub3d, ERROR_INV_TEXT);
-	ft_printf(1, "images validated!\n");
+	printf("%s\n", cub3d->map_filename);
+	get_info(cub3d);
+	// validate_textures(cub3d);
+	// //------print
+	// print_cub3d(cub3d);
+	// //------
+	// if (!verify_imgs(cub3d))
+	// 	call_error(cub3d, ERROR_INV_TEXT);
+	// ft_printf(1, "images validated!\n");
 	free_cub3d(cub3d);
 }

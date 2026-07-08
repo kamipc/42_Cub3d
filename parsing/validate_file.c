@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 20:02:41 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 13:44:28 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:51:19 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,40 @@ void	validate_file(t_cub3d *cub3d)
 	char	*temp;
 	int		i;
 
-	temp = cub3d->map_filename;
 	i = 0;
-	if (!temp)
+	if (!cub3d->map_filename)
 		call_error(cub3d, ERROR_FILE_NOEXIST);
-	while (temp[i] && temp[i + 1] != '\0')
-		i++;
+	temp = find_truefile(cub3d->map_filename, &i);
 	if ((ft_strncmp(&temp[i - 3], ".cub", 4) != 0) || (ft_strlen(temp) == 4))
+	{
+		free(temp);
 		call_error(cub3d, ERROR_FILE_TYPE);
+	}
+	free(temp);
+}
+//extract the name of the map file from the full name path
+char	*find_truefile(char	*filepath, int *i)
+{
+	char	*temp;
+	int		true_len;
+	bool	hasdirname;
+
+	hasdirname = false;
+	temp = NULL;
+	while (filepath[*i] && filepath[*i + 1] != '\0')
+	{
+		if (filepath[*i] == '/')
+			hasdirname = true;
+		(*i)++;
+	}
+	if (hasdirname == true)
+	{
+		true_len = *i;
+		while (*i > 0 && filepath[*i] != '/')
+			(*i)--;
+		true_len = true_len - (*i);
+		temp = ft_substr(filepath, *i + 1, true_len);
+		*i = true_len - 1;
+	}
+	return (temp);
 }

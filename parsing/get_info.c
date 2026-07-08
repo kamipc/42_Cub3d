@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:33:03 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 18:49:22 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/08 17:51:00 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,32 @@ void	save_info(t_cub3d *cub3d)
 {
 	int		fd;
 	char	*line;
-	bool	map_start_found;
+	char	**info;
 	int		i;
 
 	i = 0;
-	map_start_found = false;
+	info = NULL;
 	fd = open(cub3d->map_filename, O_RDONLY);
 	if (fd < 0)
 		call_error(cub3d, strerror(errno));
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (save_textures(cub3d, line))
+		if (!info)
+			info = (char **)malloc(2 * sizeof(char *));
+		else
+			ft_realloc(info, ft_strlen(info), i + 2, i + 3);
+	}
+	close(fd);
+}
+
+void	get_info(t_cub3d *cub3d)
+{
+	cub3d->textures = init_textures(cub3d);
+	cub3d->map = init_map(cub3d);
+	printf("here\n");
+	save_info(cub3d);
+}
+if (save_textures(cub3d, line))
 			continue ;
 		if (is_map_start(line))
 			map_start_found = true;
@@ -38,13 +53,3 @@ void	save_info(t_cub3d *cub3d)
 		else
 			//save_map(cub3d, line, &i);
 		free(line);
-	}
-	close(fd);
-}
-
-void	get_info(t_cub3d *cub3d)
-{
-	cub3d->textures = init_textures(cub3d);
-	cub3d->map = init_map(cub3d);
-	save_info(cub3d);
-}

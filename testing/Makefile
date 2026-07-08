@@ -6,7 +6,7 @@
 #    By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 16:29:18 by cpinho-c          #+#    #+#              #
-#    Updated: 2026/06/03 18:44:35 by cpinho-c         ###   ########.fr        #
+#    Updated: 2026/07/08 16:40:29 by cpinho-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MINILIB = ../minilibx-linux/libmlx.a
 LIBS = -L../minilibx-linux -lmlx -lX11 -lXext
 INCLUDES = -I../minilibx-linux
+VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all
 
 GREEN  = \033[0;32m
 YELLOW = \033[0;33m
