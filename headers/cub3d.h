@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:21:26 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/08 17:23:56 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/09 22:03:39 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,28 @@ t_textures	*init_textures(t_cub3d *cub3d);
 	//get_info
 void		get_info(t_cub3d *cub3d);
 void		save_info(t_cub3d *cub3d);
-	//validate
+void		trim_info(t_cub3d *cub3d);
+//validate
 void		validate(t_cub3d *cub3d);
 char		*find_truefile(char	*filepath, int *i);
-	//validate_file
+//validate_file
 void		validate_file(t_cub3d *cub3d);
-	//validate_textures
+//validate_textures
 void		validate_textures(t_cub3d *cub3d);
 bool		verify_imgs(t_cub3d *cub3d);
 bool		img_is_valid(t_cub3d *cub3d, char *path);
-	//validate_map
+//validate_map
 void		validate_map(t_cub3d *cub3d);
 
 //src
 
 //utils
-	//get_info_utils
+//get_info_utils
 bool		trim_path(t_textures *textures, char *line, char *type);
 bool		save_textures(t_cub3d *cub3d, char *line);
-bool		is_junk(char *line);
-void		save_map(t_cub3d *cub3d, char *line, int *i);
-bool		is_map_start(char *line);
+bool		is_empty(char *line);
+void		remove_line(t_cub3d *cub3d, int i);
+bool		is_map_line(char *line);
 	//error
 void		call_error(t_cub3d *cub3d, char *msg);
 	//validate_map_utils
