@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:39:31 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/09 21:49:45 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/10 00:03:36 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	print_map(t_map *map)
 	else
 	{
 		i = 0;
-		while (map->map[i])
+		while (map->copy_map[i])
 		{
-			printf("    [%2d] %s\n", i, map->map[i]);
+			printf("    [%2d] %s\n", i, map->copy_map[i]);
 			i++;
 		}
 	}
@@ -101,11 +101,10 @@ int	main(int ac, char **av)
 		call_error(NULL, ERROR_ARG);
 	cub3d = init_cub3d();
 	cub3d->map_filename = ft_strdup(av[1]);
-	validate_file(cub3d);
+	validate(cub3d);
 	printf("%s\n", cub3d->map_filename);
-	get_info(cub3d);
-	print_array(cub3d->map->map);
 	print_textures(cub3d->textures);
+	print_map(cub3d->map);
 	// validate_textures(cub3d);
 	// //------print
 	// print_cub3d(cub3d);

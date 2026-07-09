@@ -6,55 +6,44 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:28:01 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 13:54:23 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/10 00:32:11 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-bool	not_valid_character(char c)
+void	floodfill_map(t_cub3d *cub3d, int x, int y, char **map)
 {
-	if ((c != '0') && (c != '1') && (c != 'N') && (c != 'S') && (c != 'W')
-		&& (c != 'E') && (c != ' '))
-		return (true);
-	return (false);
-}
-
-bool	is_player_start(char c, int *playernum)
-{
-	if ((c != 'N') || (c != 'S') || (c != 'W') || (c != 'E'))
+	if (x < 0 || map[x] == NULL)
+		call_error(cub3d, ERROR_MAP_INV);
+	if (y < 0 || (y >= (int)ft_strlen(map[x])))
+		call_error(cub3d, ERROR_MAP_INV);
+	if (map[x][y] == '1')
+		return ;
+	else
 	{
-		(*playernum)++;
-		return (true);
+		map[x][y] = '1';
+		floodfill_map(cub3d, x + 1, y, map);
+		floodfill_map(cub3d, x, y + 1, map);
+		floodfill_map(cub3d, x - 1, y, map);
+		floodfill_map(cub3d, x, y - 1, map);
 	}
-	return (false);
 }
-
-void	verify_map_characters(t_cub3d *cub3d)
+void	verify_walls(t_cub3d *cub3d, char **map)
 {
-	int		i;
-	int		j;
-	int	playernum;
+	int	x;
+	int	y;
 
-	i = 0;
-	playernum = 0;
-	while (cub3d->map->map[i])
+	x = 0;
+	while (map[x])
 	{
-		j = 0;
-		while (cub3d->map->map[i][j])
+		y = 0;
+		while (map[x][y])
 		{
-			if (not_valid_character(cub3d->map->map[i][j]))
-				call_error(cub3d, ERROR_MAP_CHAR);
-			if (is_player_start(cub3d->map->map[i][j], &playernum))
-				{
-					if (playernum > 1)
-						call_error(cub3d, ERROR_MAP_PLAYER);
-					cub3d->map->player_start_dir = cub3d->map->map[i][j];
-					cub3d->map->player_x = i;
-					cub3d->map->player_y = j;
-				}
-			j++;
+			if (map[x][y] != '1' && map[x][y] != ' ')
+				floodfill_map(cub3d, x, y, map);
+			y++;
 		}
-		i++;
+		x++;
 	}
 }

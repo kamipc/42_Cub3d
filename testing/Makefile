@@ -6,7 +6,7 @@
 #    By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 16:29:18 by cpinho-c          #+#    #+#              #
-#    Updated: 2026/07/08 16:40:29 by cpinho-c         ###   ########.fr        #
+#    Updated: 2026/07/09 23:50:16 by cpinho-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,7 @@ SRCS = main_test.c \
 	   ../parsing/validate.c \
 	   ../utils/error.c \
 	   ../utils/get_info_utils.c \
-	   ../utils/validate_map_utils.c \
-	   ../utils/validate_map_utils2.c 
+	   ../utils/validate_map_utils.c 
 	   
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:33:03 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/09 22:08:30 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/09 23:26:43 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,3 @@ void	get_info(t_cub3d *cub3d)
 	save_info(cub3d);
 	trim_info(cub3d);
 }
-// if (save_textures(cub3d, line))
-// 			continue ;
-// 		if (is_map_start(line))
-// 			map_start_found = true;
-// 		if (!map_start_found)
-// 		{
-// 			if (is_junk(line))
-// 				call_error(cub3d, ERROR_JUNK_INFO);
-// 		}
-// 		else
-// 			//save_map(cub3d, line, &i);
-// 		free(line);

@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:07:13 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/09 22:04:59 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/09 23:21:05 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ bool	trim_path(t_textures *textures, char *line, char *type)
 	char	*temp;
 	char	*trim;
 
-	temp = line;
-	if(ft_strnstr(temp, type, ft_strlen(line)) == NULL)
+	if(ft_strncmp(line, type, ft_strlen(type)) != 0)
 		return (false);
-	temp = ft_strtrim(line + 2, " ");
+	temp = ft_strtrim(line + ft_strlen(type), " ");
 	trim = ft_strtrim(temp, "\n");
 	if ((ft_strncmp(type, "NO", 2)) == 0)
 		textures->NO = trim;

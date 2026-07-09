@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:21:26 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/09 22:03:39 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/10 00:31:04 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define ERROR_FILE_NOEXIST "File does not exist\n"
 # define ERROR_MISS_TEXT "Missing texture\n"
 # define ERROR_INV_TEXT "Invalid texture\n"
-# define ERROR_MAP_CHAR "Map has invalid information\n"
+# define ERROR_MAP_INV "Map is not valid, not surrounded by walls\n"
 # define ERROR_MAP_PLAYER "Invalid number of players on map\n"
 # define ERROR_JUNK_INFO "File has invalid information\n"
 
@@ -67,6 +67,9 @@ bool		verify_imgs(t_cub3d *cub3d);
 bool		img_is_valid(t_cub3d *cub3d, char *path);
 //validate_map
 void		validate_map(t_cub3d *cub3d);
+void		verify_map_characters(t_cub3d *cub3d);
+bool		is_player_start(char c, int *playernum);
+void		copy_map(t_cub3d *cub3d);
 
 //src
 
@@ -80,10 +83,7 @@ bool		is_map_line(char *line);
 	//error
 void		call_error(t_cub3d *cub3d, char *msg);
 	//validate_map_utils
-void		verify_map_characters(t_cub3d *cub3d);
-bool		not_valid_character(char c);
-bool		is_player_start(char c, int *playernum);
-void		verify_map_walls(t_cub3d *cub3d);
-void		copy_map(t_cub3d *cub3d);
+void		floodfill_map(t_cub3d *cub3d, int i, int j, char **map);
+void		verify_walls(t_cub3d *cub3d, char **map);
 
 #endif
