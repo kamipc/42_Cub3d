@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:26:49 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/10 00:31:27 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:53:50 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ bool	is_player_start(char c, int *playernum)
 	}
 	return (false);
 }
-
-void	verify_map_characters(t_cub3d *cub3d)
+//verify that the map has at least 1 player and no more than 1 
+void	verify_map_player(t_cub3d *cub3d)
 {
 	int		i;
 	int		j;
@@ -51,6 +51,7 @@ void	verify_map_characters(t_cub3d *cub3d)
 		call_error(cub3d, ERROR_MAP_PLAYER);
 }
 
+//makes a copy of the map to be used later for floodfill
 void	copy_map(t_cub3d *cub3d)
 {
 	int	i;
@@ -72,7 +73,7 @@ void	copy_map(t_cub3d *cub3d)
 
 void	validate_map(t_cub3d *cub3d)
 {
-	verify_map_characters(cub3d);
+	verify_map_player(cub3d);
 	copy_map(cub3d);
 	verify_walls(cub3d, cub3d->map->copy_map);
 }

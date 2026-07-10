@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:21:26 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/10 00:31:04 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/10 09:25:24 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define ERROR_MAP_INV "Map is not valid, not surrounded by walls\n"
 # define ERROR_MAP_PLAYER "Invalid number of players on map\n"
 # define ERROR_JUNK_INFO "File has invalid information\n"
+# define ERROR_RGB_FORMAT "RGB texture has invalid format/values\n"
 
 //--------------------------------------//
 
@@ -63,11 +64,12 @@ char		*find_truefile(char	*filepath, int *i);
 void		validate_file(t_cub3d *cub3d);
 //validate_textures
 void		validate_textures(t_cub3d *cub3d);
-bool		verify_imgs(t_cub3d *cub3d);
+bool		verify_imgs(t_cub3d *cub3d, bool f_rgb, bool c_rgb);
 bool		img_is_valid(t_cub3d *cub3d, char *path);
+bool		rgb_valid(char **textures);
 //validate_map
 void		validate_map(t_cub3d *cub3d);
-void		verify_map_characters(t_cub3d *cub3d);
+void		verify_map_player(t_cub3d *cub3d);
 bool		is_player_start(char c, int *playernum);
 void		copy_map(t_cub3d *cub3d);
 

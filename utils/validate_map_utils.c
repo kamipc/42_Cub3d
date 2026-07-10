@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:28:01 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/10 00:32:11 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/10 08:55:30 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ void	floodfill_map(t_cub3d *cub3d, int x, int y, char **map)
 		floodfill_map(cub3d, x, y - 1, map);
 	}
 }
+
+//since the map can have inaccessible rooms, check if there is a room
+//(anywhere where there is a 0 or player character)
+//and does floodfill there to check if the room is surrounded by walls
+//this checks if the whole map is fully enclosed and not only the room where the 
+//player starts
 void	verify_walls(t_cub3d *cub3d, char **map)
 {
 	int	x;
