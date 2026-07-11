@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:36:41 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/11 22:48:46 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 23:20:33 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	call_error(t_cub3d *cub3d, char *msg)
 {
 	printf("Error: %s", msg);
-	free_cub3d(cub3d);
+	if (cub3d)
+		free_cub3d(cub3d);
 	exit(1);
 }

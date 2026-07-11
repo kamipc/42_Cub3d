@@ -20,12 +20,28 @@
 # include <fcntl.h> //open
 # include <sys/time.h> //gettimeofday
 # include <stdbool.h> //bool
+# include <math.h>
+# include <errno.h>
 
 # include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
 
 # include "structs.h"
 # include "../libft/libft.h"
+
+//----------- WINDOWN SIZE -------------//
+
+# define WIN_WIDTH	1280
+# define WIN_HEIGHT	720
+
+//--------------- KEYS -----------------//
+
+# define KEY_ESC	65307
+# define KEY_W		119
+# define KEY_A		97
+# define KEY_S		115
+# define KEY_D		100
+# define KEY_LEFT	65361
+# define KEY_RIGHT	65363
 
 //---------- ERROR MESSAGES ------------//
 
@@ -45,12 +61,16 @@
 void		free_cub3d(t_cub3d *cub3d);
 void		free_array(char **array);
 void		free_map(t_map *map);
-void		free_textures(t_textures *textures);
+void		free_textures(void *mlx, t_textures *textures);
 
 //inits
 t_cub3d		*init_cub3d(void);
 t_map		*init_map(t_cub3d *cub3d);
 t_textures	*init_textures(t_cub3d *cub3d);
+void		init_window(t_cub3d *cub);
+void		init_image(t_cub3d *cub3d);
+void		init_ray(t_cub3d *cub3d, t_ray *ray, int x);
+void		init_player(t_cub3d *cub3d);
 
 //parsing
 	//get_info
@@ -73,6 +93,8 @@ void		validate_map(t_cub3d *cub3d);
 void		verify_map_player(t_cub3d *cub3d);
 bool		is_player_start(char c, int *playernum);
 void		copy_map(t_cub3d *cub3d);
+	//save_color
+bool		save_color(t_cub3d *cub3d, char *line, char *type);
 
 //src
 
@@ -88,5 +110,49 @@ void		call_error(t_cub3d *cub3d, char *msg);
 	//validate_map_utils
 void		floodfill_map(t_cub3d *cub3d, int i, int j, char **map);
 void		verify_walls(t_cub3d *cub3d, char **map);
+void		verify_map_characters(t_cub3d *cub3d);
+bool		not_valid_character(char c);
+bool		is_player_start(char c, int *playernum);
+void		verify_map_walls(t_cub3d *cub3d);
+void		copy_map(t_cub3d *cub3d);
+
+//execution
+	//player
+void		move_player(t_cub3d *cub3d);
+void		rotate_player(t_cub3d *cub3d);
+	//hooks
+int			close_win(t_cub3d *cub3d);
+int			key_press(int keycode, t_cub3d *cub3d);
+int			key_release(int keycode, t_cub3d *cub3d);
+	//raycast
+void		dda(t_cub3d *cub3d, t_ray *ray);
+void		calc_wall_slice(t_ray *ray);
+void		cast_rays(t_cub3d *cub3d);
+	//render
+		//draw_wall.c
+void		draw_textured_column(t_cub3d *cub3d, t_tex_col *tc);
+void		draw_wall_slice(t_cub3d *cub3d, t_ray *ray, int x);
+void		draw_ceiling(t_cub3d *cub3d, t_ray *ray, int x);
+void		draw_floor(t_cub3d *cub3d, t_ray *ray, int x);
+
+		//draw.c
+void		draw_square(t_img *img, t_square square);
+void		draw_background(t_cub3d *cub3d);
+void		draw_player(t_cub3d *cub3d);
+		//gets.c
+t_img		*get_texture(t_cub3d *cub3d, t_ray *ray);
+double		get_wall_x(t_player *player, t_ray *ray);
+int			get_tex_x(t_img *tex, t_ray *ray, double wall_x);
+int			get_tex_pixel(t_img *tex, int x, int y);
+		//load_textures.c
+void		load_texture_images(t_cub3d *cub3d);
+		//sets.c
+void		set_tex_step(t_tex_col *tc, t_ray *ray);
+		//render.c
+int			render(t_cub3d *cub3d);
+void		start_game(t_cub3d *cub3d);
+		//draw_utils.c
+void		pixel_put(t_img *img, int x, int y, int color);
+void		clear_image(t_img *img, int color);
 
 #endif

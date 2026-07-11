@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:07:13 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/11 22:48:33 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 23:22:10 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,25 @@ bool	is_empty(char *line)
 			return (false);
 		i++;
 	}
-	return (true);
+	return (false);
 }
+
 
 bool	save_textures(t_cub3d *cub3d, char *line)
 {
 	if (trim_path(cub3d->textures, line, "NO"))
 		return (true);
-	else if (trim_path(cub3d->textures, line, "SO"))
+	if (trim_path(cub3d->textures, line, "SO"))
 		return (true);
-	else if (trim_path(cub3d->textures, line, "EA"))
+	if (trim_path(cub3d->textures, line, "EA"))
 		return (true);
-	else if (trim_path(cub3d->textures, line, "WE"))
+	if (trim_path(cub3d->textures, line, "WE"))
 		return (true);
-	else if (trim_path(cub3d->textures, line, "F"))
+	if (save_color(cub3d, line, "F"))
 		return (true);
-	else if (trim_path(cub3d->textures, line, "C"))
+	if (save_color(cub3d, line, "C"))
 		return (true);
-	else
-		return (false);
+	return (false);
 }
 
 void	remove_line(t_cub3d *cub3d, int i)
@@ -99,15 +99,19 @@ void	remove_line(t_cub3d *cub3d, int i)
 bool	is_map_line(char *line)
 {
 	int	i;
+	int	has_map_char;
 
 	i = 0;
+	has_map_char = 0;
 	while (line[i])
 	{
 		if (line[i] != '1' && line[i] != '0' && line[i] != ' '
 			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'W'
 			&& line[i] != 'E' && line[i] != '\n')
 			return (false);
+		if (ft_strchr("01NSEW", line[i]))
+			has_map_char = 1;
 		i++;
 	}
-	return (true);
+	return (has_map_char);
 }
