@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:39:31 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 17:41:22 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/10 00:03:36 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	print_map(t_map *map)
 	else
 	{
 		i = 0;
-		while (map->map[i])
+		while (map->copy_map[i])
 		{
-			printf("    [%2d] %s\n", i, map->map[i]);
+			printf("    [%2d] %s\n", i, map->copy_map[i]);
 			i++;
 		}
 	}
@@ -82,6 +82,17 @@ void	print_cub3d(t_cub3d *cub3d)
 	printf("===========================\n");
 }
 
+void	print_array(char **array)
+{
+	int	i = 0;
+	
+	while (array[i])
+	{
+		printf("%s\n", array[i]);
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_cub3d	*cub3d;
@@ -90,13 +101,16 @@ int	main(int ac, char **av)
 		call_error(NULL, ERROR_ARG);
 	cub3d = init_cub3d();
 	cub3d->map_filename = ft_strdup(av[1]);
-	validate_file(cub3d);
-	validate_textures(cub3d);
-	//------print
-	print_cub3d(cub3d);
-	//------
-	if (!verify_imgs(cub3d))
-		call_error(cub3d, ERROR_INV_TEXT);
-	ft_printf(1, "images validated!\n");
+	validate(cub3d);
+	printf("%s\n", cub3d->map_filename);
+	print_textures(cub3d->textures);
+	print_map(cub3d->map);
+	// validate_textures(cub3d);
+	// //------print
+	// print_cub3d(cub3d);
+	// //------
+	// if (!verify_imgs(cub3d))
+	// 	call_error(cub3d, ERROR_INV_TEXT);
+	// ft_printf(1, "images validated!\n");
 	free_cub3d(cub3d);
 }
