@@ -6,11 +6,22 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:33:03 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/09 23:26:43 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 22:41:11 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
+
+char	**realloc_array(char **array, int old, int new)
+{
+	size_t	old_size;
+	size_t	new_size;
+
+	old_size = old * sizeof(char *);
+	new_size = new * sizeof(char *);
+	array = ft_realloc(array, old_size, new_size);
+	return (array);
+}
 
 //save every line from the map file into an array
 void	save_info(t_cub3d *cub3d)
@@ -25,26 +36,29 @@ void	save_info(t_cub3d *cub3d)
 	fd = open(cub3d->map_filename, O_RDONLY);
 	if (fd < 0)
 		call_error(cub3d, strerror(errno));
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		if (!info)
 			info = (char **)malloc(2 * sizeof(char *));
 		else
-			info = ft_realloc(info, (i + 1) * sizeof(char *), (i + 2) * sizeof(char *));
+			info = realloc_array(info, (i + 1), (i + 2));
 		info[i] = ft_strdup(line);
 		info[i + 1] = NULL;
 		free(line);
 		i++;
+		line = get_next_line(fd);
 	}
 	cub3d->map->map = info;
 	close(fd);
 }
 
-//check the array line by lina to verify what info it has (textures or map info),
+//check the array line by lina to verify what info it has 
+//(textures or map info),
 //and remove lines that are not map lines
 void	trim_info(t_cub3d *cub3d)
 {
-	int	i;
+	int		i;
 	char	*temp;
 	bool	map_found;
 

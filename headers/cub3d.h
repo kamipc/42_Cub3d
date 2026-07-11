@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:21:26 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/10 09:25:24 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 22:39:09 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_textures	*init_textures(t_cub3d *cub3d);
 void		get_info(t_cub3d *cub3d);
 void		save_info(t_cub3d *cub3d);
 void		trim_info(t_cub3d *cub3d);
+char		**realloc_array(char **array, int old, int new);
 //validate
 void		validate(t_cub3d *cub3d);
 char		*find_truefile(char	*filepath, int *i);

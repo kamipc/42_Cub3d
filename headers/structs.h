@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:22:08 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 13:35:31 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 22:44:29 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 typedef struct s_textures
 {
-	char	*NO;
-	char	*SO;
-	char	*EA;
-	char	*WE;
-	char	*F;
-	char	*C;
+	char	*no;
+	char	*so;
+	char	*ea;
+	char	*we;
+	char	*f;
+	char	*c;
 }			t_textures;
 
 typedef struct s_map

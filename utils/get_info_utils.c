@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:07:13 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/09 23:21:05 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 22:48:33 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ bool	trim_path(t_textures *textures, char *line, char *type)
 	char	*temp;
 	char	*trim;
 
-	if(ft_strncmp(line, type, ft_strlen(type)) != 0)
+	if (ft_strncmp(line, type, ft_strlen(type)) != 0)
 		return (false);
 	temp = ft_strtrim(line + ft_strlen(type), " ");
 	trim = ft_strtrim(temp, "\n");
 	if ((ft_strncmp(type, "NO", 2)) == 0)
-		textures->NO = trim;
+		textures->no = trim;
 	else if ((ft_strncmp(type, "SO", 2)) == 0)
-		textures->SO = trim;
+		textures->so = trim;
 	else if ((ft_strncmp(type, "EA", 2)) == 0)
-		textures->EA = trim;
+		textures->ea = trim;
 	else if ((ft_strncmp(type, "WE", 2)) == 0)
-		textures->WE = trim;
+		textures->we = trim;
 	else if ((ft_strncmp(type, "F", 1)) == 0)
-		textures->F = trim;
+		textures->f = trim;
 	else if ((ft_strncmp(type, "C", 1)) == 0)
-		textures->C = trim;
+		textures->c = trim;
 	free(temp);
 	return (true);
 }
@@ -52,6 +52,7 @@ bool	is_empty(char *line)
 	}
 	return (true);
 }
+
 bool	save_textures(t_cub3d *cub3d, char *line)
 {
 	if (trim_path(cub3d->textures, line, "NO"))
@@ -72,7 +73,7 @@ bool	save_textures(t_cub3d *cub3d, char *line)
 
 void	remove_line(t_cub3d *cub3d, int i)
 {
-	int	j;
+	int		j;
 	char	**new_map;
 
 	j = 0;
