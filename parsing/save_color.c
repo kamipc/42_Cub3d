@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sade-ara <sade-ara@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 11:55:51 by sade-ara          #+#    #+#             */
-/*   Updated: 2026/07/05 11:55:51 by sade-ara         ###   ########.fr       */
+/*   Updated: 2026/07/15 09:58:25 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,14 @@ static bool	parse_rgb(char *value, int *packed)
 
 bool	save_color(t_cub3d *cub3d, char *line, char *type)
 {
-	char	*trimmed;
-	int		len;
 	int		packed;
 
-	len = ft_strlen(type);
-	if (ft_strncmp(line, type, len) != 0)
-		return (false);
-	if (line[len] != ' ' && line[len] != '\t')
-		return (false);
-	trimmed = ft_strtrim(line + len, " \t\n\r");
-	if (!trimmed || !parse_rgb(trimmed, &packed))
-		return (free(trimmed), call_error(cub3d, ERROR_JUNK_INFO), false);
-	free(trimmed);
+	if (!line || !parse_rgb(line, &packed))
+		return (free(line), call_error(cub3d, ERROR_RGB_FORMAT), false);
 	if (ft_strncmp(type, "F", 1) == 0)
 		cub3d->textures->floor_color = packed;
 	else
 		cub3d->textures->ceil_color = packed;
+	free(line);
 	return (true);
 }

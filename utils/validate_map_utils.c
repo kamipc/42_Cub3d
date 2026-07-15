@@ -52,6 +52,4 @@ void	verify_walls(t_cub3d *cub3d, char **map)
 		}
 		x++;
 	}
-	if (playernum == 0)
-		call_error(cub3d, ERROR_MAP_PLAYER);
 }

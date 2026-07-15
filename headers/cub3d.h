@@ -85,22 +85,19 @@ char		*find_truefile(char	*filepath, int *i);
 void		validate_file(t_cub3d *cub3d);
 //validate_textures
 void		validate_textures(t_cub3d *cub3d);
-bool		verify_imgs(t_cub3d *cub3d, bool f_rgb, bool c_rgb);
+bool		verify_imgs(t_cub3d *cub3d);
 bool		img_is_valid(t_cub3d *cub3d, char *path);
-bool		rgb_valid(char **textures);
 //validate_map
 void		validate_map(t_cub3d *cub3d);
 void		verify_map_player(t_cub3d *cub3d);
 bool		is_player_start(char c, int *playernum);
 void		copy_map(t_cub3d *cub3d);
-	//save_color
+//save color
 bool		save_color(t_cub3d *cub3d, char *line, char *type);
 
-//src
-
 //utils
-//get_info_utils
-bool		trim_path(t_textures *textures, char *line, char *type);
+	//get_info_utils
+bool		trim_path(t_cub3d *cub3d, char *line, char *type);
 bool		save_textures(t_cub3d *cub3d, char *line);
 bool		is_empty(char *line);
 void		remove_line(t_cub3d *cub3d, int i);
@@ -110,10 +107,7 @@ void		call_error(t_cub3d *cub3d, char *msg);
 	//validate_map_utils
 void		floodfill_map(t_cub3d *cub3d, int i, int j, char **map);
 void		verify_walls(t_cub3d *cub3d, char **map);
-void		verify_map_characters(t_cub3d *cub3d);
-bool		not_valid_character(char c);
 bool		is_player_start(char c, int *playernum);
-void		verify_map_walls(t_cub3d *cub3d);
 void		copy_map(t_cub3d *cub3d);
 
 //execution

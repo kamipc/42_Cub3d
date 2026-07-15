@@ -31,10 +31,6 @@ void	free_textures(void *mlx, t_textures *textures)
 	if (!textures)
 		return ;
 	destroy_texture_images(mlx, textures);
-	if (textures->c)
-		free(textures->c);
-	if (textures->f)
-		free(textures->f);
 	if (textures->ea)
 		free(textures->ea);
 	if (textures->we)

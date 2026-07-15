@@ -23,7 +23,7 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 
 SRC = \
-	main.c \
+	main_test.c \
 	inits/init_cub3d.c \
 	inits/init_image.c \
 	inits/init_map.c \
@@ -34,7 +34,6 @@ SRC = \
 	utils/error.c \
 	utils/get_info_utils.c \
 	utils/validate_map_utils.c \
-	utils/validate_map_utils2.c \
 	free/free_array.c \
 	free/free_cub3d.c \
 	free/free_map.c \
@@ -66,7 +65,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C $(MLX_DIR)
+	@make -C $(MLX_DIR) -O3 -std=gnu99
 	@make -C $(LIBFT_DIR)
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
 

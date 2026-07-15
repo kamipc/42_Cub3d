@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 20:04:40 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/11 23:16:57 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 23:17:18 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,5 @@ t_textures	*init_textures(t_cub3d *cub3d)
 	if (!textures)
 		call_error(cub3d, strerror(errno));
 	ft_memset(textures, 0, sizeof(t_textures));
-	textures->c = NULL;
-	textures->f = NULL;
-	textures->no = NULL;
-	textures->so = NULL;
-	textures->ea = NULL;
-	textures->we = NULL;
 	return (textures);
 }
