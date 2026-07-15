@@ -50,6 +50,7 @@
 # define ERROR_FILE_NOEXIST "File does not exist\n"
 # define ERROR_MISS_TEXT "Missing texture\n"
 # define ERROR_INV_TEXT "Invalid texture\n"
+# define ERROR_DUP_TEXT "Duplicated textures\n"
 # define ERROR_MAP_INV "Map is not valid, not surrounded by walls\n"
 # define ERROR_MAP_PLAYER "Invalid number of players on map\n"
 # define ERROR_JUNK_INFO "File has invalid information\n"
@@ -76,6 +77,7 @@ void		init_player(t_cub3d *cub3d);
 	//get_info
 void		get_info(t_cub3d *cub3d);
 void		save_info(t_cub3d *cub3d);
+bool		is_empty(char *line);
 void		trim_info(t_cub3d *cub3d);
 char		**realloc_array(char **array, int old, int new);
 //validate
@@ -99,7 +101,6 @@ bool		save_color(t_cub3d *cub3d, char *line, char *type);
 	//get_info_utils
 bool		trim_path(t_cub3d *cub3d, char *line, char *type);
 bool		save_textures(t_cub3d *cub3d, char *line);
-bool		is_empty(char *line);
 void		remove_line(t_cub3d *cub3d, int i);
 bool		is_map_line(char *line);
 	//error

@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 20:04:40 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/11 23:17:18 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/15 13:26:38 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ t_textures	*init_textures(t_cub3d *cub3d)
 	if (!textures)
 		call_error(cub3d, strerror(errno));
 	ft_memset(textures, 0, sizeof(t_textures));
+	textures->ceil_color = -1;
+	textures->floor_color = -1;
 	return (textures);
 }

@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 20:02:54 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/15 09:15:43 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/15 13:29:25 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ bool	verify_imgs(t_cub3d *cub3d)
 void	validate_textures(t_cub3d *cub3d)
 {
 	if ((!cub3d->textures->no) || (!cub3d->textures->so)
-		|| (!cub3d->textures->ea) || (!cub3d->textures->ceil_color)
-		|| (!cub3d->textures->we) || (!cub3d->textures->floor_color))
+		|| (!cub3d->textures->ea) || (cub3d->textures->ceil_color == -1)
+		|| (!cub3d->textures->we) || (cub3d->textures->floor_color == -1))
 		call_error(cub3d, ERROR_MISS_TEXT);
 	if (!verify_imgs(cub3d))
 		call_error(cub3d, ERROR_INV_TEXT);

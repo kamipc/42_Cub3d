@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:33:03 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/11 23:18:03 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:33:21 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,21 @@ void	save_info(t_cub3d *cub3d)
 	close(fd);
 }
 
+bool	is_empty(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t'
+			&& line[i] != '\r')
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 //check the array line by lina to verify what info it has 
 //(textures or map info),
 //and remove lines that are not map lines
@@ -68,8 +83,10 @@ void	trim_info(t_cub3d *cub3d)
 	{
 		if (!map_found && save_textures(cub3d, cub3d->map->map[i]))
 			remove_line(cub3d, i);
-		else if (is_empty(cub3d->map->map[i]))
+		else if (is_empty(cub3d->map->map[i]) && !map_found)
 			remove_line(cub3d, i);
+		else if (is_empty(cub3d->map->map[i]) && map_found)
+			call_error(cub3d, ERROR_JUNK_INFO);
 		else if (is_map_line(cub3d->map->map[i]))
 		{
 			map_found = true;
@@ -85,8 +102,6 @@ void	trim_info(t_cub3d *cub3d)
 
 void	get_info(t_cub3d *cub3d)
 {
-	cub3d->textures = init_textures(cub3d);
-	cub3d->map = init_map(cub3d);
 	save_info(cub3d);
 	trim_info(cub3d);
 }

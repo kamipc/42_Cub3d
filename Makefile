@@ -23,7 +23,7 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 
 SRC = \
-	main_test.c \
+	main.c \
 	inits/init_cub3d.c \
 	inits/init_image.c \
 	inits/init_map.c \
@@ -62,19 +62,30 @@ OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
+GREEN = \033[0;32m
+RESET = \033[0m
+
+.SILENT:
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C $(MLX_DIR) -O3 -std=gnu99
+	@echo "$(GREEN)Compiling MiniLibX...$(RESET)"
+	@make -C $(MLX_DIR) > /dev/null 2>&1
+	@echo "$(GREEN)✓ MiniLibX compiled successfully!$(RESET)"
+	@echo "$(GREEN)Compiling Libft...$(RESET)"
 	@make -C $(LIBFT_DIR)
+	@echo "$(GREEN)✓ Libft compiled successfully!$(RESET)"
+	@echo "$(GREEN)Compiling Cub3d...$(RESET)"
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@echo "$(GREEN)✓ Cub3d built successfully!$(RESET)"
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
-	make -C $(MLX_DIR) clean
+	make --silent -C $(MLX_DIR) clean
 
 fclean: clean
 	make -C $(LIBFT_DIR) fclean
