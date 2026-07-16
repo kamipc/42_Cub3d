@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:46:43 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/06/03 15:09:19 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 23:09:31 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_map(t_map *map)
 {
-	if(!map)
+	if (!map)
 		return ;
 	if (map->copy_map)
 		free_array(map->copy_map);

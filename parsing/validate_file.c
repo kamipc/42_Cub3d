@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 20:02:41 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/08 16:51:19 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 23:18:24 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	validate_file(t_cub3d *cub3d)
 	}
 	free(temp);
 }
+
 //extract the name of the map file from the full name path
 char	*find_truefile(char	*filepath, int *i)
 {

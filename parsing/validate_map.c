@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:26:49 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/10 08:53:50 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/11 23:19:22 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ bool	is_player_start(char c, int *playernum)
 	}
 	return (false);
 }
+
 //verify that the map has at least 1 player and no more than 1 
 void	verify_map_player(t_cub3d *cub3d)
 {
 	int		i;
 	int		j;
-	int	playernum;
+	int		playernum;
 
 	i = 0;
 	playernum = 0;
@@ -36,13 +37,13 @@ void	verify_map_player(t_cub3d *cub3d)
 		while (cub3d->map->map[i][j])
 		{
 			if (is_player_start(cub3d->map->map[i][j], &playernum))
-				{
-					if (playernum > 1)
-						call_error(cub3d, ERROR_MAP_PLAYER);
-					cub3d->map->player_start_dir = cub3d->map->map[i][j];
-					cub3d->map->player_x = i;
-					cub3d->map->player_y = j;
-				}
+			{
+				if (playernum > 1)
+					call_error(cub3d, ERROR_MAP_PLAYER);
+				cub3d->map->player_start_dir = cub3d->map->map[i][j];
+				cub3d->map->player_x = i;
+				cub3d->map->player_y = j;
+			}
 			j++;
 		}
 		i++;
