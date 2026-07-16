@@ -6,7 +6,7 @@
 /*   By: cpinho-c <cpinho-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:26:49 by cpinho-c          #+#    #+#             */
-/*   Updated: 2026/07/11 23:19:22 by cpinho-c         ###   ########.fr       */
+/*   Updated: 2026/07/16 21:03:33 by cpinho-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	verify_map_player(t_cub3d *cub3d)
 				if (playernum > 1)
 					call_error(cub3d, ERROR_MAP_PLAYER);
 				cub3d->map->player_start_dir = cub3d->map->map[i][j];
-				cub3d->map->player_x = i;
-				cub3d->map->player_y = j;
+				cub3d->map->player_x = j;
+				cub3d->map->player_y = i;
 			}
 			j++;
 		}

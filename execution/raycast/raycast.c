@@ -48,7 +48,11 @@ void	calc_wall_slice(t_ray *ray)
 	ray->draw_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
+	if (ray->draw_start > WIN_HEIGHT)
+		ray->draw_start = WIN_HEIGHT;
 	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
+	if (ray->draw_end < 0)
+		ray->draw_end = 0;
 	if (ray->draw_end >= WIN_HEIGHT)
 		ray->draw_end = WIN_HEIGHT - 1;
 }

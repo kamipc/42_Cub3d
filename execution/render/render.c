@@ -19,8 +19,6 @@ int	render(t_cub3d *cub3d)
 	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->img.img, 0, 0);
 	return (0);
 }
-// #pragma GCC diagnostic push
-// #pragma GCC diagnostic ignored "-Wcast-function-type"
 
 void	start_game(t_cub3d *cub3d)
 {
@@ -35,5 +33,3 @@ void	start_game(t_cub3d *cub3d)
 	mlx_loop_hook(cub3d->mlx, (int (*)())render, cub3d);
 	mlx_loop(cub3d->mlx);
 }
-
-// #pragma GCC diagnostic pop
